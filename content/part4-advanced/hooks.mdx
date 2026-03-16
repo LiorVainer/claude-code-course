@@ -1,0 +1,86 @@
+import { Callout } from 'nextra/components'
+
+# Hooks — גבולות דטרמיניסטיים
+
+<Callout emoji="💡">
+Hooks הם פקודות shell שרצות אוטומטית על אירועים ספציפיים ב-Claude Code. בניגוד ל-AI שהוא פרובביליסטי, Hooks הם **דטרמיניסטיים** — הם תמיד יפעלו כפי שהגדרתם.
+</Callout>
+
+## מה זה Hook?
+
+Hook הוא פקודה shell שמוגדרת להריץ על אירוע מסוים. לדוגמה: לפני שClaude משתמש בכלי כלשהו, Hook יכול לבדוק את הקלט ולחסום גישה לקבצים רגישים.
+
+## האירועים הנתמכים
+
+| אירוע | מתי מופעל |
+|-------|-----------|
+| `PreToolUse` | לפני שימוש בכל כלי |
+| `PostToolUse` | אחרי שימוש בכל כלי |
+| `Stop` | כאשר Claude מסיים את הריצה |
+
+## הגדרת Hook — קובץ JSON
+
+```json filename=".claude/settings.json" showLineNumbers
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /path/to/block-env.py"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+### דוגמה: חסימת גישה לקובץ .env
+
+```python filename="block-env.py" showLineNumbers
+# block-env.py
+import json
+import sys
+
+input_data = json.load(sys.stdin)
+file_path = input_data.get('tool_input', {}).get('file_path', '')
+
+if '.env' in file_path:
+    print(json.dumps({
+        "decision": "block",
+        "reason": "גישה לקובץ .env חסומה מטעמי אבטחה"
+    }))
+    sys.exit(0)
+
+print(json.dumps({"decision": "approve"}))
+```
+
+## AI פרובביליסטי vs Hooks דטרמיניסטיים
+
+<Callout emoji="💡">
+AI יכול לשכוח, לפרש בצורה שונה, או להתבלבל. Hook לעולם לא ישכח — הוא רץ כל פעם, בדיוק כפי שהגדרתם.
+</Callout>
+
+| גישה | אמינות | דוגמה |
+|------|--------|--------|
+| "אל תיגע ב-.env" בפרומפט | פרובביליסטי — יכול להתעלם | 95% מהפעמים יעבוד |
+| Hook שחוסם .env | דטרמיניסטי — תמיד יחסום | 100% תמיד |
+
+## מקרי שימוש נפוצים
+
+- **חסימת .env** — מניעת חשיפת secrets
+- **בדיקת לוגינג** — רישום כל פעולה לביקורת
+- **גיבוי אוטומטי** — snapshot לפני שינויים גדולים
+- **הודעות Slack** — התראה כאשר Claude מסיים משימה
+- **בדיקת תאימות** — וידוא שקוד עוקב אחרי conventions
+
+## עיקרון המפתח
+
+| רכיב | סוג | התנהגות |
+|---|---|---|
+| AI (Claude) | פרובביליסטי | מקבל החלטות מבוססות הסתברות |
+| Hooks | דטרמיניסטי | רצים תמיד, בצורה קבועה |
+| **שילוב השניים** | | **גמישות + ביטחון** |

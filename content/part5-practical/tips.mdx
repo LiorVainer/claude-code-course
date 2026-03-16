@@ -1,0 +1,78 @@
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# טיפים: context-mode, Remote Control ועוד
+
+## context-mode — חיסכון של עד 98% זיכרון
+
+### הבעיה
+
+כאשר Claude קורא קבצים גדולים (CSV, logs, JSON גדול), כל התוכן נטען לזיכרון. קובץ CSV של 10MB שוקל tokens רבים ומגביל מה Claude יכול לעשות.
+
+### הפתרון: context-mode plugin
+
+<Terminal title="context-mode — התקנה" lines={[
+  { prompt: '❯', command: '/plugin marketplace add mksglu/context-mode' },
+  { output: '✓ Installed mksglu/context-mode', color: '#28c840' },
+]} />
+
+context-mode מונע טעינת נתונים גולמיים לזיכרון. במקום זאת, הנתונים נשמרים ב-sandbox נפרד וClaude עובד עם תוצאות מחושבות בלבד.
+
+### החיסכון
+
+| ללא context-mode | עם context-mode |
+|-----------------|-----------------|
+| קובץ CSV של 100k שורות = ~500k tokens | אותו קובץ = ~10k tokens |
+| יחס: 4.6x יותר tokens | חיסכון: 78% reduction |
+
+<Callout emoji="💡">
+מפתחים שדיווחו על חיסכון של עד 98% ב-token usage אחרי הפעלת context-mode על פרויקטים עם הרבה קבצי נתונים.
+</Callout>
+
+## Remote Control — שליטה מהטלפון
+
+### מה זה?
+
+Remote Control מאפשר לכם לנהל session של Claude Code מהטלפון בזמן שהקוד רץ על המחשב שלכם.
+
+### הפעלה
+
+<Terminal title="remote control — הפעלה" lines={[
+  { prompt: '❯', command: 'rc' },
+  { output: 'Scan QR to connect:' },
+  { output: '▄▄▄▄▄▄▄▄▄▄▄' },
+  { output: '█ ▄▄▄ █ ▄▄█' },
+  { output: '█ ███ █ ██' },
+  { output: '█▄▄▄▄▄█ ▄ █' },
+  { output: '▄▄▄▄▄▄▄ ██' },
+  { output: '...' },
+  { output: 'Session: claude-abc123', color: '#28c840' },
+]} />
+
+Claude Code מציג QR code. סרקו עם הטלפון וקיבלתם שליטה מלאה על ה-session.
+
+<Callout emoji="💡">
+הקוד נשאר על המחשב שלכם — הטלפון רק שולח פקודות. אין העברת קוד לענן.
+</Callout>
+
+## שימושים מעבר לקוד
+
+Claude Code שימושי הרבה מעבר לכתיבת קוד:
+
+| שימוש | דוגמה |
+|-------|--------|
+| ניתוח CSV | "נתח את המכירות ב-Q4 וזהה trends" |
+| תיעוד | "צור README מפורט לפרויקט הזה" |
+| Git workflows | "סכם את כל השינויים ב-PR הזה" |
+| DevOps | "בדוק את ה-logs ומצא שגיאות חוזרות" |
+| אוטומציה | "כתוב script שמארגן קבצים לפי תאריך" |
+
+## שילוב context-mode + Claude Code
+
+<Terminal title="context-mode — workflow" lines={[
+  { prompt: '❯', command: '/plugin marketplace add mksglu/context-mode' },
+  { output: '✓ Installed mksglu/context-mode', color: '#28c840' },
+  { output: '→ העבירו לClaude קובץ נתונים גדול' },
+  { output: '→ Claude עובד עם sandbox — לא נטען לזיכרון' },
+  { output: '✓ קבלו ניתוח מבלי לבזבז tokens', color: '#28c840' },
+]} />

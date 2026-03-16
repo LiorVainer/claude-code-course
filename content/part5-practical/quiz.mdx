@@ -1,0 +1,75 @@
+import QuizQuestion from '../../app/_components/QuizQuestion'
+
+# בדקו את עצמכם — חלק ה׳
+
+חמש שאלות על שליטה מעשית: /simplify, /usage, context-mode, remote control, ואבטחה.
+
+<QuizQuestion
+  question="כמה sub-agents מרים /simplify ומה הם בודקים?"
+  options={[
+    'agent אחד שבודק הכל',
+    '2 agents: bugs ו-performance',
+    '3 agents: איכות, שימוש חוזר, ויעילות',
+    '5 agents — אחד לכל חלק בקוד',
+  ]}
+  correctIndex={2}
+  explanation="/simplify מרים 3 sub-agents במקביל: Agent 1 בודק איכות (bugs, error handling), Agent 2 בודק שימוש חוזר (duplicate code), ו-Agent 3 בודק יעילות (performance)."
+  contentLink="/part5-practical/simplify"
+  contentLabel="/simplify"
+/>
+
+<QuizQuestion
+  question="מה מציגה הפקודה /usage?"
+  options={[
+    'רשימת כל הקבצים שClaude שינה',
+    'שימוש שבועי ב-tokens, מספר הודעות, ותאריך איפוס',
+    'רשימת הכלים שClaude מותר לו להשתמש בהם',
+    'לוג של כל הפקודות שהורצו',
+  ]}
+  correctIndex={1}
+  explanation="/usage מציגה את השימוש השבועי ב-tokens (ביחס לתקרה), מספר ההודעות שנשלחו, ותאריך האיפוס השבועי הבא."
+  contentLink="/part5-practical/daily-habits"
+  contentLabel="הרגלי עבודה"
+/>
+
+<QuizQuestion
+  question="מה ה-plugin context-mode עושה ואיזה חיסכון הוא מספק?"
+  options={[
+    'דוחס קבצי קוד — חיסכון של 10%',
+    'מונע טעינת נתונים גולמיים לזיכרון — חיסכון של עד 78-98% בtokens',
+    'מקצר את זמן ה-response של Claude ב-50%',
+    'מסיר הערות מהקוד כדי לחסוך tokens',
+  ]}
+  correctIndex={1}
+  explanation="context-mode מונע טעינת נתונים גולמיים (CSV, JSON גדול, logs) לזיכרון. הנתונים נשמרים ב-sandbox ו-Claude עובד עם תוצאות מחושבות, עם חיסכון של 4.6x (78%) ועד 98% בcases מסוימים."
+  contentLink="/part5-practical/tips"
+  contentLabel="טיפים"
+/>
+
+<QuizQuestion
+  question="כיצד Remote Control עובד — איפה הקוד נשמר?"
+  options={[
+    'הקוד מועלה לענן של Anthropic לצורך העיבוד',
+    'הקוד נשמר תמיד על המחשב שלכם — הטלפון רק שולח פקודות',
+    'הקוד מועתק לטלפון ועובד שם',
+    'הקוד נשמר ב-GitHub Actions',
+  ]}
+  correctIndex={1}
+  explanation="Remote Control עובד כך שהטלפון שולח פקודות למחשב שלכם, אבל הקוד עצמו נשאר על המחשב. אין העברת קוד לענן."
+  contentLink="/part5-practical/tips"
+  contentLabel="טיפים"
+/>
+
+<QuizQuestion
+  question="מה הגישה המומלצת לאבטחת קבצי .env עם Claude Code?"
+  options={[
+    'לכתוב ב-CLAUDE.md "אל תיגע ב-.env"',
+    'להשתמש ב-Hook PreToolUse שחוסם גישה לקבצים רגישים — דטרמיניסטי',
+    'למחוק את קובץ .env לפני כל session',
+    'Claude מעולם לא ניגש לקבצים אלה — זה מוגן אוטומטית',
+  ]}
+  correctIndex={1}
+  explanation="הוראה ב-CLAUDE.md היא פרובביליסטית ויכולה להתעלם ממנה. Hook PreToolUse שחוסם גישה לקבצים רגישים הוא דטרמיניסטי — רץ תמיד, 100% אמין."
+  contentLink="/part5-practical/security"
+  contentLabel="אבטחה"
+/>

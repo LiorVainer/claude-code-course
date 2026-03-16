@@ -1,0 +1,59 @@
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# הרשאות ואבטחה
+
+## ברירת המחדל: כל פעולה צריכה אישור מפורש
+
+Claude Code לא עושה כלום בשקט. כל קריאה לכלי — עריכת קובץ, הרצת פקודה, גישה לרשת — מחכה לאישור שלכם.
+
+## דוגמה לחלון אישור
+
+<Terminal title="claude" lines={[
+  { output: 'Claude wants to: Edit auth.ts' },
+  { output: '' },
+  { output: '  - line 42: if (user) → if (user && user.id)' },
+  { output: '' },
+  { output: '[Allow once]  [Allow for session]  [Allow always]  [Deny]', color: '#febc2e' },
+]} />
+
+**ארבע אפשרויות:**
+- **Allow once** — אשר רק את הפעולה הספציפית הזו
+- **Allow for session** — אשר את סוג הפעולה הזה עד שתסגרו את הטרמינל
+- **Allow always** — שמור בהגדרות ואל תשאל יותר
+- **Deny** — דחה ועצור
+
+## הגדרת הרשאות ב-settings.json
+
+כשתרצו לחסוך זמן על פעולות שאתם סומכים עליהן, הוסיפו אותן להגדרות:
+
+```json filename=".claude/settings.json" showLineNumbers
+{
+  "allowedTools": {
+    "Bash": {
+      "allowed": ["git *", "npm test", "npm run *", "tsc *"],
+      "denied": ["rm -rf *", "DROP TABLE *", "curl * | bash"]
+    },
+    "Edit": {
+      "allowed": ["src/**", "app/**", "content/**"],
+      "denied": [".env*", "*.key", "*.pem"]
+    }
+  }
+}
+```
+
+**עקרון הגיוני:** תנו הרשאה לדברים שאתם עושים כל יום. חסמו דברים שעלולים לגרום נזק בלתי הפיך.
+
+## ציר הזמן של בניית אמון
+
+| שלב | מצב | גישה |
+|-----|-----|------|
+| יום 1 | חדש לגמרי | אישור ידני לכל פעולה |
+| שבוע 1 | מתחילים להכיר | Allow for session לפעולות שגרתיות |
+| שבוע 2 | מכירים את הדפוסים | מוסיפים לـ settings.json |
+| חודש 1 | סומכים על הזרימה | Allow always לפקודות בטוחות |
+| הלאה | שותפות מלאה | Auto-approve לרוב הפעולות |
+
+<Callout emoji="💡">
+אל תמהרו לתת הרשאות רחבות. בנו אמון הדרגתי. כשתבינו מה Claude Code עושה ולמה — תרגישו בנוח לפתוח יותר. ושימו לב: **לעולם** לא תנו Allow always לפקודות הרסניות כמו `rm -rf` או שינויי DB ישירים.
+</Callout>

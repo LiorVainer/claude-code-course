@@ -1,0 +1,88 @@
+import Terminal from '../../app/_components/Terminal'
+import { Callout, Steps } from 'nextra/components'
+
+# היום הראשון שלכם עם Claude Code
+
+<Callout emoji="💡">
+5 שלבים מהתקנה עד המשימה הראשונה שלכם. עקבו אחרי הסדר — כל שלב בנוי על הקודם.
+</Callout>
+
+<Steps>
+### שלב 1: התקנה
+
+<Terminal title="התקנת Claude Code" lines={[
+  { prompt: '❯', command: 'npm i -g @anthropic-ai/claude-code' },
+  { output: '✓ Installed @anthropic-ai/claude-code', color: '#28c840' },
+]} />
+
+לאחר ההתקנה, ודאו שיש לכם חשבון Claude ו-API key או מנוי Claude Pro/Max.
+
+### שלב 2: אתחול
+
+<Terminal title="אתחול פרויקט" lines={[
+  { prompt: '❯', command: 'cd my-project && claude' },
+  { output: '✓ Claude Code session started', color: '#28c840' },
+  { prompt: '❯', command: '/init' },
+  { output: '→ Scanning project structure...', color: '#cc785c' },
+  { output: '✓ Created CLAUDE.md with project summary', color: '#28c840' },
+]} />
+
+Claude יסרוק את הפרויקט ויצור `CLAUDE.md` ראשוני עם סיכום הארכיטקטורה.
+
+### שלב 3: גלו את הפרויקט
+
+<Terminal title="גילוי פרויקט" lines={[
+  { prompt: '❯', command: '/context' },
+  { output: 'Context: 12% used (24k / 200k tokens)' },
+  { prompt: '❯', command: 'What does this project do? What are the main modules?' },
+  { output: '→ Reading project files...', color: '#cc785c' },
+]} />
+
+Claude יקרא קבצים ויספק סיכום. זו הדרך הטובה ביותר להבין פרויקט חדש במהירות.
+
+### שלב 4: המשימה הראשונה
+
+<Terminal title="משימה ראשונה — /plan" lines={[
+  { prompt: '❯', command: '/plan' },
+  { output: '→ Ready for task description...' },
+  { prompt: '❯', command: 'תוסיף validation לטופס ה-login:' },
+  { output: '  - email חייב להיות בפורמט נכון' },
+  { output: '  - password חייב להיות לפחות 8 תווים' },
+  { output: '  - הצג הודעות שגיאה בעברית' },
+  { output: '→ Generating plan...', color: '#cc785c' },
+]} />
+
+תארו את המשימה שאתם רוצים לבצע. Claude יציג תוכנית. סקרו אותה, אישרו, ו-Claude יתחיל לעבוד.
+
+### שלב 5: סקירה עם /simplify
+
+לאחר שהקוד מוכן, הריצו:
+
+<Terminal title="סקירת קוד — /simplify" lines={[
+  { prompt: '❯', command: '/simplify' },
+  { output: '→ Launching 3 review agents...', color: '#cc785c' },
+  { output: '✓ Agent 1 (Quality) — complete', color: '#28c840' },
+  { output: '✓ Agent 2 (Reusability) — complete', color: '#28c840' },
+  { output: '✓ Agent 3 (Efficiency) — complete', color: '#28c840' },
+]} />
+
+3 agents יסקרו את הקוד שלכם במקביל:
+- **איכות**: bugs, error handling, edge cases
+- **שימוש חוזר**: duplicate code, shared functions
+- **יעילות**: performance, simplification
+
+קבלו סקירת קוד מקצועית תוך שניות.
+</Steps>
+
+## טיפים לימים הראשונים
+
+<Callout emoji="💬">
+טיפ לפרומפטינג: תנו context מראש. במקום "תקן את הבאג", אמרו "בפרויקט React עם TypeScript, הפונקציה X מחזירה null כאשר המשתמש לא מחובר. תקן כך שתחזיר error מתאים."
+</Callout>
+
+| מה לעשות | מה להימנע |
+|----------|-----------|
+| תנו context מפורט | פרומפטים קצרים מדי |
+| סקרו שינויים לפני אישור | לאשר כל דבר בעיניים עצומות |
+| הוסיפו לCLAUDE.md כשמשהו לא עובד | לצפות שClaude יזכור הכל |
+| השתמשו ב-/plan למשימות גדולות | לתת משימות ענקיות ללא תכנון |

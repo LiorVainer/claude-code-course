@@ -1,0 +1,46 @@
+import { Callout } from 'nextra/components'
+import Terminal from '../../app/_components/Terminal'
+
+# Tokens — האטומים של AI
+
+Token הוא יחידת הטקסט הקטנה ביותר שמודל שפה מכיר. זה לא מילה ולא תו בודד — זה נתח טקסט שהמודל למד לזהות כיחידה אחת.
+
+**כלל האצבע:** 1 token ≈ 4 תווים באנגלית ≈ 0.75 מילים.
+
+## דוגמאות ל-Tokenization
+
+<Terminal title="tokenizer" lines={[
+  { output: '"hello"          → 1 token' },
+  { output: '"unbelievable"   → 3 tokens', color: '#cc785c' },
+  { output: '                   (un + believ + able)', color: '#8b949e' },
+  { output: '"const x = 42;" → 5 tokens', color: '#cc785c' },
+  { output: '                   (const + " " + x + " = " + 42 + ;)', color: '#8b949e' },
+]} />
+
+## למה קוד עולה יותר Tokens?
+
+כל סוגריים, נקודה-פסיק, ריווח הזחה — token נפרד. קובץ TypeScript של 100 שורות שווה בין 800 ל-1,200 tokens.
+
+| סוג תוכן | עלות משוערת |
+|---|---|
+| טקסט אנגלי רגיל | ~1 token לכל 4 תווים |
+| קוד (JavaScript / TypeScript) | פי 1.5–2 מטקסט רגיל |
+| עברית / ערבית / סינית | פי 3–4 מאנגלית לאותו תוכן |
+
+## Output עולה פי 5 מ-Input
+
+כל token שהמודל **מייצר** בתשובה עולה פחות ממה שעולה לשלוח אותו כ-Input. בפועל, מחיר Output גבוה פי 5 ממחיר Input. לכן: פרומפט ארוך + תשובה קצרה הרבה יותר זול מפרומפט קצר + תשובה ארוכה.
+
+<Callout emoji="💡">
+  Tokens הם כמו חשבון חשמל של ה-AI שלכם. ככל שאתם שולחים יותר — משלמים יותר, ומחכים יותר.
+</Callout>
+
+<Callout emoji="💬">
+  **טיפ לפרומפטים — היו ספציפיים כדי לחסוך Tokens:**
+
+  ❌ "תקן את הbug באוטנטיקציה"
+
+  ✅ "קרא את auth.ts ותקן את הבדיקת null בשורה 42"
+
+  הגרסה הספציפית חוסכת Tokens כי המודל לא צריך לחפש, ומייצרת תשובה ממוקדת יותר.
+</Callout>

@@ -1,0 +1,112 @@
+import { Callout } from 'nextra/components'
+
+# אבטחה
+
+<Callout emoji="💡">
+Claude Code הוא כלי חזק עם גישה לקבצים, ל-terminal, ולאינטרנט. גישה גדולה = אחריות גדולה. ארבעה עקרונות לעבודה בטוחה.
+</Callout>
+
+## 1. סקרו Skills לפני התקנה
+
+כל הSkills ב-skills.sh הן open source. לפני שמתקינים Skill של מישהו אחר:
+
+```bash
+# בדקו את ה-source code לפני התקנה
+# ב-skills.sh תמצאו קישור לrepository
+```
+
+**מה לחפש:**
+- האם הSkill מריצה פקודות shell חשופות?
+- האם היא שולחת נתונים לשרת חיצוני?
+- כמה stars/downloads יש לה?
+
+## 2. Hook לחסימת .env
+
+אל תסמכו על הוראות טקסטואליות ("אל תיגע ב-.env") — השתמשו ב-Hook דטרמיניסטי:
+
+```json filename=".claude/settings.json" showLineNumbers
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python ~/.claude/hooks/block-sensitive.py"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+```python filename="block-sensitive.py" showLineNumbers
+# block-sensitive.py
+import json, sys
+
+data = json.load(sys.stdin)
+path = data.get('tool_input', {}).get('file_path', '')
+
+sensitive = ['.env', '.env.local', '.env.production', 'secrets.json']
+if any(s in path for s in sensitive):
+    print(json.dumps({
+        "decision": "block",
+        "reason": f"גישה לקובץ רגיש חסומה: {path}"
+    }))
+    sys.exit(0)
+
+print(json.dumps({"decision": "approve"}))
+```
+
+## 3. התחילו עם הרשאות ברירת מחדל
+
+<Callout emoji="💡">
+אל תתנו לClaude הרשאות מלאות מהיום הראשון. התחילו עם ברירות המחדל, ראו מה Claude עושה, ואז הרחיבו הרשאות בהתאם.
+</Callout>
+
+| שבוע | גישה |
+|---|---|
+| שבוע 1 | ברירות מחדל — Claude מבקש אישור לפעולות |
+| שבוע 2 | הוסיפו הרשאות ספציפיות שנדרשות |
+| שבוע 3 | אישרו רק מה שאתם מבינים |
+
+## 4. Allowlist לצוות — settings.json
+
+בעבודת צוות, הגדירו allowlist משותף:
+
+```json filename=".claude/settings.json" showLineNumbers
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(npm run *)",
+      "Read(**)",
+      "Write(src/**)",
+      "Write(tests/**)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Read(.env*)",
+      "Write(.env*)"
+    ]
+  }
+}
+```
+
+## סיכום עקרונות אבטחה
+
+| עיקרון | מדוע |
+|--------|------|
+| סקרו Skills לפני התקנה | open source אבל לא מבוקר |
+| Hook לחסימת קבצים רגישים | דטרמיניסטי — לא תלוי ב-AI |
+| הרשאות מינימליות בהתחלה | הבינו לפני שאתם סומכים |
+| Allowlist לצוות | עקביות ושקיפות |
+
+## מה לא לעשות
+
+- **אל תתנו** `--dangerously-skip-permissions` בprod
+- **אל תשמרו** API keys בקבצים שClaude קורא
+- **אל תאשרו** פקודות Bash שאתם לא מבינים
+- **אל תתקינו** Skills ממקורות לא מוכרים

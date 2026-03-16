@@ -1,0 +1,81 @@
+import DiagramImage from '../../app/_components/DiagramImage'
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# Skills — תבניות פרומפט לשימוש חוזר
+
+<Callout emoji="💡">
+Skills הם תבניות פרומפט שנטענות רק כאשר צריך אותן — **lazy loading**. הם חוסכים tokens כי הם לא טעונים בזיכרון כל הזמן, אלא רק כשמשתמשים בהם.
+</Callout>
+
+## מה זה Skill?
+
+Skill הוא קובץ Markdown שמכיל הוראות, תבניות, ופרומפטים לשימוש חוזר. במקום לכתוב את אותו הפרומפט שוב ושוב, אתם מגדירים Skill פעם אחת ומשתמשים בו בפקודה פשוטה.
+
+## Lazy Loading — חיסכון ב-tokens
+
+| | ללא Skills | עם Skills |
+|---|---|---|
+| פרומפטים | בזיכרון תמיד → בזבוז tokens | נטענים רק כשקוראים להם → חיסכון משמעותי |
+
+## גילוי Skills מותקנות
+
+<Terminal title="skills — גילוי Skills מותקנות" lines={[
+  { prompt: '❯', command: '/skills' },
+  { output: 'Installed skills:' },
+  { output: '  cc10x/tdd' },
+  { output: '  cc10x/code-review' },
+  { output: '  mksglu/context-mode' },
+]} />
+
+הפקודה מציגה את כל ה-Skills המותקנות במכונה שלכם.
+
+## מדריך skills.sh — קהילה
+
+[skills.sh](https://skills.sh) הוא הרפוזיטורי הקהילתי ל-Skills. תוכלו:
+- לגלות Skills שאחרים כתבו
+- להוריד Skills שימושיות
+- לפרסם Skills שכתבתם
+
+## התקנת Skill
+
+<Terminal title="skills — התקנה" lines={[
+  { prompt: '❯', command: '/skill add author/skill-name' },
+]} />
+
+לדוגמה:
+
+<Terminal title="skills — התקנת Skills קהילתיות" lines={[
+  { prompt: '❯', command: '/skill add cc10x/tdd' },
+  { output: '✓ Installed cc10x/tdd', color: '#28c840' },
+  { prompt: '❯', command: '/skill add cc10x/code-review' },
+  { output: '✓ Installed cc10x/code-review', color: '#28c840' },
+  { prompt: '❯', command: '/skill add mksglu/context-mode' },
+  { output: '✓ Installed mksglu/context-mode', color: '#28c840' },
+]} />
+
+## שימוש ב-Skill
+
+לאחר ההתקנה, פשוט קוראים ל-Skill בשם:
+
+<Terminal title="skills — שימוש" lines={[
+  { prompt: '❯', command: '/tdd' },
+  { output: '# מפעיל את ה-TDD skill' },
+  { prompt: '❯', command: '/review' },
+  { output: '# מפעיל את ה-code review skill' },
+]} />
+
+## יתרונות Skills
+
+| יתרון | תיאור |
+|-------|--------|
+| חיסכון ב-tokens | לא נטענים כשלא צריך אותם |
+| עקביות | אותו פרומפט בכל ריצה |
+| שיתוף צוות | כל חבר צוות משתמש באותן הגדרות |
+| גרסאות | ניהול גרסאות עם git |
+
+<DiagramImage
+  src="/images/diagrams/skills-lazy-loading.png"
+  alt="דיאגרמת lazy loading של Skills — Skills נטענות מה-disk לזיכרון רק כאשר מפעילים אותן"
+  caption="ארכיטקטורת Skills: lazy loading חוסך tokens"
+/>

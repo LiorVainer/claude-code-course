@@ -1,0 +1,73 @@
+import QuizQuestion from '../../app/_components/QuizQuestion'
+
+# בדקו את עצמכם — חלק ג׳
+
+<QuizQuestion
+  question="כשאתם נותנים ל-Claude Code משימה, מה קורה?"
+  options={[
+    'הוא חושב בבת אחת ומוציא את כל הקוד',
+    'הוא עובד בלולאה: חושב → בוחר כלי → מפעיל → מסתכל על התוצאה → ממשיך או מסיים',
+    'הוא שולח את הבקשה לשרת Anthropic ומקבל תשובה',
+    'הוא מחפש ב-Stack Overflow ומעתיק פתרונות',
+  ]}
+  correctIndex={1}
+  explanation="Claude Code עובד בלולאה אג׳נטית. הוא בוחר כלי (Read, Edit, Bash), מפעיל אותו, בוחן את התוצאה, ומחליט אם להמשיך. כל פעולה גלויה ודורשת אישור."
+  contentLink="/part3-claude-code/agentic-loop"
+  contentLabel="הלולאה האג׳נטית"
+/>
+
+<QuizQuestion
+  question="איזה כלי Claude Code משתמש בו כדי לקרוא קבצים?"
+  options={[
+    'Fetch',
+    'Read',
+    'Get',
+    'Load',
+  ]}
+  correctIndex={1}
+  explanation="כלי ה-Read הוא זה שקורא קבצים. Claude Code משתמש גם ב-Edit (לעריכה), Bash (להרצת פקודות), ו-Write (ליצירת קבצים חדשים)."
+  contentLink="/part3-claude-code/agentic-loop"
+  contentLabel="הלולאה האג׳נטית"
+/>
+
+<QuizQuestion
+  question="מה נכון לגבי קובץ CLAUDE.md?"
+  options={[
+    'צריך לטעון אותו ידנית בתחילת כל session',
+    'הוא נטען אוטומטית לתוך ה-context בכל session',
+    'הוא נשמר רק כשמשתמשים בפקודה /memory',
+    'הוא מוגבל ל-50 שורות',
+  ]}
+  correctIndex={1}
+  explanation="CLAUDE.md נטען אוטומטית בכל session — זו הנקודה כולה. הוא מספק ל-Claude Code הקשר על הפרויקט בלי שתצטרכו להסביר מחדש בכל פעם. שמרו אותו מתחת ל-200 שורות כי כל שורה עולה tokens."
+  contentLink="/part3-claude-code/claude-md"
+  contentLabel="CLAUDE.md + Auto Memory"
+/>
+
+<QuizQuestion
+  question="מה עושה /compact?"
+  options={[
+    'מדחס את קבצי הקוד בפרויקט',
+    'מוחק את כל היסטוריית הצ׳אט',
+    'מסכם את היסטוריית השיחה לתקציר קצר ומשחרר מקום ב-context window',
+    'מדחס את קבצי ה-node_modules',
+  ]}
+  correctIndex={2}
+  explanation="/compact מסכם את ההיסטוריה הארוכה לתקציר קצר — לא מוחק, מסכם. זה משחרר tokens ומאפשר להמשיך לעבוד בלי לאבד את ההקשר. עשו /compact כל כמה משימות, לפני שה-context מתמלא."
+  contentLink="/part3-claude-code/stateless"
+  contentLabel="Stateless + /compact"
+/>
+
+<QuizQuestion
+  question="לפי כלל 90/9/1, איזה מודל כדאי להשתמש בו לרוב עבודת הפיתוח היומית?"
+  options={[
+    'Haiku — הכי מהיר והכי זול',
+    'Opus — הכי חכם, תמיד הכי טוב',
+    'Sonnet — האיזון בין ביצועים לעלות',
+    'לחלוף בין כולם באקראי',
+  ]}
+  correctIndex={2}
+  explanation="Sonnet הוא הבחירה ל-90% מהעבודה — features, באגים, refactoring. Opus (9%) שמור לבעיות מורכבות כמו ארכיטקטורה. Haiku (1%) למשימות מכניות פשוטות. תמיד התחילו מלמטה למעלה."
+  contentLink="/part3-claude-code/models"
+  contentLabel="משפחת המודלים"
+/>

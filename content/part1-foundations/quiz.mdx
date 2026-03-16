@@ -1,0 +1,59 @@
+import QuizQuestion from '../../app/_components/QuizQuestion'
+
+# בדקו את עצמכם — חלק א׳
+
+<QuizQuestion
+  question="מה זה Token?"
+  options={[
+    "מילה שלמה בטקסט",
+    "תו בודד (אות או ספרה)",
+    "נתח טקסט שהמודל למד לזהות כיחידה אחת",
+    "שורת קוד שלמה",
+  ]}
+  correctIndex={2}
+  explanation="Token הוא לא מילה ולא תו — זה נתח שהמודל למד לזהות. כלל האצבע: 1 token ≈ 4 תווים אנגליים ≈ 0.75 מילים."
+  contentLink="/part1-foundations/tokens"
+  contentLabel="Tokens — האטומים של AI"
+/>
+
+<QuizQuestion
+  question="למה קוד עולה יותר Tokens ממה שנראה?"
+  options={[
+    "כי קוד כתוב באנגלית בלבד",
+    "כי כל סוגריים, נקודה-פסיק וריווח הזחה הם token נפרד",
+    "כי מודלים לא מבינים קוד",
+    "כי קוד תמיד ארוך יותר מטקסט",
+  ]}
+  correctIndex={1}
+  explanation="כל סימן תחביר — סוגריים, נקודה-פסיק, רווחי הזחה — הם token נפרד. קובץ TypeScript של 100 שורות = 800–1,200 tokens."
+  contentLink="/part1-foundations/tokens"
+  contentLabel="Tokens — האטומים של AI"
+/>
+
+<QuizQuestion
+  question="מה קורה כשה-Context Window מתמלא?"
+  options={[
+    "הכלי מפסיק לעבוד לחלוטין",
+    "מתחילה שיחה חדשה אוטומטית",
+    "התשובות הופכות פחות טובות ופחות מדויקות",
+    "העלות יורדת כי יש פחות מקום",
+  ]}
+  correctIndex={2}
+  explanation="בדיוק כמו RAM: כשמתמלא, המחשב לא קורס — אבל הוא מאט ומשגה. Context Window מלא = תשובות שמתעלמות מהיסטוריה מוקדמת."
+  contentLink="/part1-foundations/context-window"
+  contentLabel="Context Window — ה-RAM"
+/>
+
+<QuizQuestion
+  question="מה המשמעות של 'Output עולה פי 5 מ-Input'?"
+  options={[
+    "עולה יותר לשלוח הודעות ארוכות",
+    "התשובות שClaudeמייצר יקרות פי 5 מהטקסט שאתם שולחים",
+    "כדאי לכתוב פרומפטים קצרים בלבד",
+    "לא ניתן לבקש תשובות ארוכות",
+  ]}
+  correctIndex={1}
+  explanation="כל token שהמודל מייצר (Output) עולה בערך פי 5 מtoken שאתם שולחים (Input). לכן: פרומפט ארוך + תשובה קצרה = זול יחסית."
+  contentLink="/part1-foundations/tokens"
+  contentLabel="Tokens — האטומים של AI"
+/>

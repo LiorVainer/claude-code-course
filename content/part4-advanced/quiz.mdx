@@ -1,0 +1,75 @@
+import QuizQuestion from '../../app/_components/QuizQuestion'
+
+# בדקו את עצמכם — חלק ד׳
+
+חמש שאלות על תכונות מתקדמות: Sub-Agents, Hooks, Skills, MCP, ו-OpenSpec.
+
+<QuizQuestion
+  question="כאשר Claude מרים sub-agent, מה יש לאותו sub-agent גישה אליו?"
+  options={[
+    'כל היסטוריית השיחה הראשית',
+    'ההוראות שנשלחו אליו בלבד — זיכרון מבודד',
+    'הזיכרון של כל ה-sub-agents האחרים',
+    'קבצי הפרויקט בלבד',
+  ]}
+  correctIndex={1}
+  explanation="כל sub-agent עובד בזיכרון מבודד לחלוטין. הוא מקבל את ההוראות שה-agent הראשי שולח אליו, ואינו רואה את השיחה הראשית או sub-agents אחרים."
+  contentLink="/part4-advanced/sub-agents"
+  contentLabel="Sub-Agents"
+/>
+
+<QuizQuestion
+  question="מה ההבדל המרכזי בין Hooks לבין הוראה רגילה ב-CLAUDE.md?"
+  options={[
+    'Hooks מהירים יותר',
+    'Hooks עולים פחות tokens',
+    'Hooks הם דטרמיניסטיים — רצים תמיד, AI הוא פרובביליסטי',
+    'Hooks תומכים בעברית',
+  ]}
+  correctIndex={2}
+  explanation="AI הוא פרובביליסטי ויכול לפרש הוראות בצורה שונה. Hook הוא פקודת shell שרצה תמיד בדיוק כפי שהגדרתם — 100% דטרמיניסטי."
+  contentLink="/part4-advanced/hooks"
+  contentLabel="Hooks"
+/>
+
+<QuizQuestion
+  question="למה Skills משתמשות ב-lazy loading?"
+  options={[
+    'כי הן גדולות מדי לטעינה רגילה',
+    'כדי לחסוך tokens — Skills נטענות רק כשצריך אותן',
+    'כי זה הגדרת ברירת המחדל של Next.js',
+    'כדי לתמוך בעברית',
+  ]}
+  correctIndex={1}
+  explanation="Skills לא טעונות בזיכרון כל הזמן. הן נטענות רק כאשר מפעילים אותן, מה שחוסך tokens בצורה משמעותית."
+  contentLink="/part4-advanced/skills"
+  contentLabel="Skills"
+/>
+
+<QuizQuestion
+  question="איזו פקודה משתמשים להתקנת context7 כ-MCP server?"
+  options={[
+    'npm install context7',
+    'claude mcp add context7',
+    'npx ctx7 setup --claude',
+    '/mcp install context7',
+  ]}
+  correctIndex={2}
+  explanation="הפקודה npx ctx7 setup --claude מתקינה את context7 ומוסיפה אותו כ-MCP server ל-Claude Code."
+  contentLink="/part4-advanced/mcp"
+  contentLabel="MCP"
+/>
+
+<QuizQuestion
+  question="מהם 4 שלבי OpenSpec לפי הסדר הנכון?"
+  options={[
+    'Code → Test → Review → Deploy',
+    'Propose → Design → Spec → Implement',
+    'Plan → Build → Review → Ship',
+    'Init → Draft → Approve → Merge',
+  ]}
+  correctIndex={1}
+  explanation="OpenSpec עוקב אחרי ארבעה שלבים: Propose (הצעה), Design (עיצוב), Spec (מפרט), Implement (מימוש). רק לאחר אישור המפרט עוברים לכתיבת קוד."
+  contentLink="/part4-advanced/openspec"
+  contentLabel="OpenSpec"
+/>

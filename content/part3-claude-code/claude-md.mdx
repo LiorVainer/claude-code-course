@@ -1,0 +1,73 @@
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# CLAUDE.md — קובץ ה-Onboarding של הפרויקט
+
+## מה זה CLAUDE.md?
+
+קובץ טקסט שנטען אוטומטית לתוך ה-context של Claude Code בכל session. הוא "מציג" את הפרויקט שלכם — ה-stack, הכללים, הפקודות — בלי שתצטרכו להסביר מחדש בכל פעם.
+
+## מה כדאי לכלול
+
+```markdown filename="CLAUDE.md" showLineNumbers
+# CLAUDE.md
+
+## Stack
+- Next.js 16 + React 19 + TypeScript 5
+- Tailwind CSS 4
+- PostgreSQL + Prisma ORM
+
+## פקודות
+- npm run dev    — שרת פיתוח
+- npm run build — build לפרודקשן
+- npm test       — כל הטסטים
+- tsc            — בדיקת types
+
+## כללים
+- אחרי כל שינוי קוד — הרץ tsc לוודא אין שגיאות
+- בדיקות תמיד לפני commit
+- RTL בכל ממשק משתמש — lang="he" dir="rtl"
+
+## מבנה
+- app/          — Next.js App Router
+- content/      — MDX pages
+- app/_components/ — Client components
+```
+
+## היררכיית CLAUDE.md
+
+| רמה | מיקום | מה מכסה |
+|-----|--------|---------|
+| Global | `~/.claude/CLAUDE.md` | הגדרות אישיות לכל הפרויקטים |
+| Project | `/project/CLAUDE.md` | כללי הפרויקט הספציפי |
+| Folder | `/project/src/CLAUDE.md` | כללים לתת-תיקייה |
+
+**עיקרון:** ספציפי דורס כללי. הגדרות ב-`src/CLAUDE.md` ינצחו על הגדרות ב-`/project/CLAUDE.md`.
+
+## שמרו על קיצור — מתחת ל-200 שורות
+
+CLAUDE.md נטען לתוך ה-context בכל הודעה. קובץ ארוך = יותר tokens = יותר עלות בכל interaction.
+
+**כלל אצבע:** אם משהו שוב ושוב חוזר בפרומפטים שלכם — שימו אותו ב-CLAUDE.md. אם אתם מסבירים את אותו דבר 3 פעמים — זה שייך לשם.
+
+## Auto Memory — Claude כותב לעצמו הערות
+
+Claude Code יכול לזכור דברים שלמד במהלך העבודה. גילה שהפרויקט משתמש ב-`npm` ולא ב-`pnpm`? הוא ישמור את זה. בsession הבא — הוא כבר יודע.
+
+<Terminal title="claude" lines={[
+  { prompt: '>', command: '/memory' },
+  { output: '' },
+  { output: '📝 מה Claude זוכר על הפרויקט:' },
+  { output: '- Package manager: npm (not pnpm)' },
+  { output: '- Test command: npm test -- --watch=false' },
+  { output: '- TypeScript strict mode: enabled' },
+  { output: '- Preferred import style: named exports' },
+]} />
+
+ה-memory שורד בין sessions — בניגוד להיסטוריית הצ׳אט שמתאפסת.
+
+<Callout emoji="💬">
+**טיפ — תנו ל-CLAUDE.md לעבוד בשבילכם:**
+
+כל הוראה שאתם חוזרים עליה בפרומפטים — שימו אותה ב-CLAUDE.md. "תמיד הרץ tsc", "תמיד כתוב בעברית", "תמיד כלול טסטים" — אחת ולתמיד, לא בכל פרומפט מחדש.
+</Callout>

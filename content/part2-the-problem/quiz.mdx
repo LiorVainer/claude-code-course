@@ -1,0 +1,59 @@
+import QuizQuestion from '../../app/_components/QuizQuestion'
+
+# בדקו את עצמכם — חלק ב׳
+
+<QuizQuestion
+  question="מה הגורם העיקרי לכישלון של לולאת ה-Copy-Paste?"
+  options={[
+    "ChatGPT לא חכם מספיק",
+    "מפתחים לא יודעים לנסח פרומפטים",
+    "ChatGPT לא רואה את הפרויקט — רק מה שהדבקתם",
+    "הקוד שנוצר תמיד שגוי",
+  ]}
+  correctIndex={2}
+  explanation="הבעיה הבסיסית היא Context: ChatGPT עונה בלי לראות את שאר הקוד, הtests, הארכיטקטורה — ולכן הפתרונות גנריים ולא מותאמים."
+  contentLink="/part2-the-problem/copy-paste-loop"
+  contentLabel="לולאת ה-Copy-Paste"
+/>
+
+<QuizQuestion
+  question="מה הכוונה ב'Human Compiler' בהקשר של עבודה עם ChatGPT?"
+  options={[
+    "מפתח שכותב קוד ידני במקום AI",
+    "מפתח שמעתיק, מדביק, מתקן imports וכותב glue code ידנית",
+    "מפתח שמהדר קוד C בלבד",
+    "מפתח שלומד איך מהדר עובד",
+  ]}
+  correctIndex={1}
+  explanation="בלי כלי Agentic, המפתח הופך ל'מהדר אנושי': כל תשובה דורשת העתקה, הדבקה, תיקון הזחה, תיקון imports וחיבור חלקים שונים — עבודה ידנית ומתישה."
+  contentLink="/part2-the-problem/copy-paste-loop"
+  contentLabel="לולאת ה-Copy-Paste"
+/>
+
+<QuizQuestion
+  question="מה ההגדרה של Vibe Coding?"
+  options={[
+    "כתיבת קוד לפי תחושת בטן בלי תכנון",
+    "שימוש ב-AI רק לכתיבת תיעוד",
+    "פרדיגמת פיתוח שבה המפתח עובר מ'מקלידן' ל'ארכיטקט שמפקח על AI Agent'",
+    "שפת תכנות חדשה מבוססת-AI",
+  ]}
+  correctIndex={2}
+  explanation="Vibe Coding היא פרדיגמה — לא טכנולוגיה. המפתח מגדיר, מאשר ובודק; ה-AI מממש, מריץ ומתקן. התפקידים מתחלפים."
+  contentLink="/part2-the-problem/vibe-coding"
+  contentLabel="Vibe Coding"
+/>
+
+<QuizQuestion
+  question="מי טבע את המונח 'Vibe Coding'?"
+  options={[
+    "Sam Altman, CEO של OpenAI",
+    "Andrej Karpathy, מייסד-שותף של OpenAI",
+    "Dario Amodei, CEO של Anthropic",
+    "Linus Torvalds, יוצר Linux",
+  ]}
+  correctIndex={1}
+  explanation="Andrej Karpathy — מייסד-שותף של OpenAI ולשעבר ראש AI ב-Tesla — טבע את המונח בתחילת 2025 לתיאור הפרדיגמה החדשה של פיתוח עם AI Agents."
+  contentLink="/part2-the-problem/vibe-coding"
+  contentLabel="Vibe Coding"
+/>

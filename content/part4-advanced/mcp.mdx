@@ -1,0 +1,86 @@
+import DiagramImage from '../../app/_components/DiagramImage'
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# MCP — Model Context Protocol
+
+<Callout emoji="💡">
+MCP הוא ה-API של עולם ה-AI לכלים חיצוניים — פרוטוקול סטנדרטי שמאפשר לכל מודל AI להתחבר לכל כלי חיצוני. כמו ש-REST API מחבר שרתים לעולם, MCP מחבר AI לכלים.
+</Callout>
+
+## מה זה MCP?
+
+**Model Context Protocol** הוא תקן פתוח שפיתחה Anthropic. הוא מגדיר כיצד AI יכול לתקשר עם כלים חיצוניים — databases, APIs, ממשקי פיתוח, ועוד.
+
+| | ללא MCP | עם MCP |
+|---|---|---|
+| אינטגרציה | כל מודל + כל כלי = integration מיוחד | כל מודל + כל כלי = חיבור אחיד |
+
+## התקנת context7 — דוגמה מהירה
+
+<Terminal title="mcp — התקנת context7" lines={[
+  { prompt: '❯', command: 'npx ctx7 setup --claude' },
+  { output: '✓ context7 MCP server added to Claude Code', color: '#28c840' },
+]} />
+
+הפקודה מוסיפה את context7 כ-MCP server ל-Claude Code.
+
+## בדיקת חיבורים פעילים
+
+<Terminal title="mcp — בדיקת חיבורים" lines={[
+  { prompt: '❯', command: '/mcp' },
+  { output: 'Connected MCP servers:' },
+  { output: '  ✓ context7', color: '#28c840' },
+  { output: '  ✓ github-mcp', color: '#28c840' },
+]} />
+
+מציג את כל ה-MCP servers המחוברים כרגע.
+
+## שרתי MCP נפוצים
+
+| שרת | שימוש |
+|-----|--------|
+| context7 | דוקומנטציה מעודכנת של ספריות |
+| GitHub MCP | קריאת issues, PRs, קוד |
+| Figma MCP | עיצובים ישירות לקוד |
+| Postgres MCP | שאילתות על database |
+| Slack MCP | שליחת הודעות ואינטגרציה |
+
+## Figma MCP — Design to Code
+
+<Callout emoji="💡">
+עם Figma MCP, Claude יכול לקרוא ישירות את הקומפוננטות מ-Figma ולהמיר אותן לקוד React. אין צורך לצלם screenshot ולהסביר — Claude רואה את ה-design tokens, מרווחים, וצבעים ישירות.
+</Callout>
+
+### תהליך עבודה עם Figma MCP
+
+1. מחברים Figma MCP
+2. מדביקים קישור לפריים ב-Figma
+3. Claude קורא את העיצוב ישירות
+4. Claude מייצר קוד React מדויק
+
+### התקנת Figma MCP
+
+<Terminal title="mcp — התקנת Figma MCP" lines={[
+  { prompt: '❯', command: 'npx figma-mcp setup --claude' },
+  { output: '✓ Figma MCP server added to Claude Code', color: '#28c840' },
+]} />
+
+לאחר מכן ב-Claude Code:
+
+<Terminal title="mcp — Figma prompt" lines={[
+  { prompt: '❯', command: 'קוד את הקומפוננט מהפריים הזה: https://www.figma.com/file/abc123/MyDesign?node-id=1:2' },
+]} />
+
+<DiagramImage
+  src="/images/diagrams/mcp-api.svg"
+  alt="דיאגרמת MCP כ-API — מודל AI מחובר לכלים חיצוניים דרך פרוטוקול אחיד"
+  caption="MCP: ה-API של AI לעולם החיצוני"
+/>
+
+## יתרונות MCP
+
+- **סטנדרטיזציה** — אותו פרוטוקול לכל הכלים
+- **אבטחה** — כל שרת מנהל הרשאות בנפרד
+- **הרחבה** — קל להוסיף כלים חדשים
+- **קהילה** — אלפי שרתים זמינים

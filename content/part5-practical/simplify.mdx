@@ -1,0 +1,76 @@
+import DiagramImage from '../../app/_components/DiagramImage'
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# /simplify — סקירת קוד אוטומטית
+
+<Callout emoji="💡">
+/simplify מרים 3 sub-agents במקביל שמסקרים את הקוד שלכם מזוויות שונות. כל agent עובד בזיכרון נפרד — כמו לקבל 3 code reviews מקצועיים בו-זמנית.
+</Callout>
+
+## איך זה עובד?
+
+כאשר אתם מריצים `/simplify`, Claude מרים 3 sub-agents מיד:
+
+<Terminal title="/simplify — הפעלה" lines={[
+  { prompt: '❯', command: '/simplify' },
+  { output: '→ Launching 3 review agents in parallel...', color: '#cc785c' },
+  { output: '' },
+  { output: '  Agent 1 (איכות)       — scanning...' },
+  { output: '  Agent 2 (שימוש חוזר)  — scanning...' },
+  { output: '  Agent 3 (יעילות)      — scanning...' },
+  { output: '' },
+  { output: '✓ Agent 1 (Quality)     — complete', color: '#28c840' },
+  { output: '✓ Agent 2 (Reusability) — complete', color: '#28c840' },
+  { output: '✓ Agent 3 (Efficiency)  — complete', color: '#28c840' },
+  { output: '' },
+  { output: '→ Merging findings...', color: '#cc785c' },
+]} />
+
+## שלושת ה-Agents
+
+| Agent | תחום | מה הוא בודק |
+|-------|------|-------------|
+| Agent 1: איכות | Quality | Bugs, error handling, edge cases, input validation |
+| Agent 2: שימוש חוזר | Reusability | Duplicate code, functions שניתנות לשיתוף, abstractions |
+| Agent 3: יעילות | Efficiency | Performance bottlenecks, unnecessary re-renders, N+1 queries |
+
+## זיכרון נפרד — יתרון מרכזי
+
+כל agent מסתכל על הקוד בעיניים טריות, ללא הנחות שנוצרו בשיחה הקודמת. זה מחקה את הדינמיקה של code review אמיתי שבו מפתח חיצוני מסתכל על הקוד.
+
+<Callout emoji="💡">
+טיפ: הריצו /simplify לפני כל PR. זה כמו לקחת 3 code reviewers מקצועיים לכל commit — בחינם ובלי לחכות.
+</Callout>
+
+## דוגמת פלט
+
+<Terminal title="/simplify — תוצאות סקירה" lines={[
+  { output: '## סיכום סקירת /simplify' },
+  { output: '' },
+  { output: '### Agent 1 — איכות' },
+  { output: '⚠️  getUserData() לא מטפל ב-network error', color: '#febc2e' },
+  { output: '⚠️  חסר validation לפרמטר userId', color: '#febc2e' },
+  { output: '✅  error handling ב-login נראה טוב', color: '#28c840' },
+  { output: '' },
+  { output: '### Agent 2 — שימוש חוזר' },
+  { output: '💡  formatDate() מופיעה ב-3 קבצים — העבירו לutils/', color: '#cc785c' },
+  { output: '💡  fetchWithAuth pattern חוזר — שקלו custom hook', color: '#cc785c' },
+  { output: '' },
+  { output: '### Agent 3 — יעילות' },
+  { output: '⚡  users.map().filter() — אפשר לאחד לreduce()', color: '#febc2e' },
+  { output: '⚡  useEffect בלי dependencies array — יגרום לריצה בכל render', color: '#febc2e' },
+]} />
+
+## מתי להשתמש
+
+- לפני כל PR / code review
+- לאחר שClaude כתב קוד מורכב
+- כאשר רוצים "עיניים שניות" על קוד קיים
+- לפני deploy לproduction
+
+<DiagramImage
+  src="/images/diagrams/simplify-3agents.png"
+  alt="תרשים /simplify — 3 sub-agents עובדים במקביל על איכות, שימוש חוזר ויעילות"
+  caption="/simplify: 3 agents מקבילים לסקירת קוד מקצועית"
+/>

@@ -1,0 +1,120 @@
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# Slash Commands — הפקודות השימושיות
+
+## הפקודות הנפוצות
+
+### /init — אתחל פרויקט חדש
+
+<Terminal title="claude" lines={[
+  { prompt: '>', command: '/init' },
+  { output: '' },
+  { output: 'Scanning project structure...' },
+  { output: 'Creating CLAUDE.md with:' },
+  { output: '  - Detected stack: Next.js + TypeScript + Tailwind' },
+  { output: '  - Package manager: npm' },
+  { output: '  - Test command: npm test' },
+  { output: '  - Build command: npm run build' },
+  { output: '' },
+  { output: 'CLAUDE.md created ✓', color: '#28c840' },
+]} />
+
+שימוש: בתחילת כל פרויקט חדש. Claude סורק את המבנה ויוצר CLAUDE.md ראשוני.
+
+### /plan — תכנן לפני שתבצע
+
+<Terminal title="claude" lines={[
+  { prompt: '>', command: '/plan "הוסף authentication עם NextAuth.js"' },
+  { output: '' },
+  { output: '📋 Plan for: Add authentication with NextAuth.js', color: '#cc785c' },
+  { output: '' },
+  { output: 'Phase 1: Setup' },
+  { output: '  - Install next-auth package' },
+  { output: '  - Create app/api/auth/[...nextauth]/route.ts' },
+  { output: '' },
+  { output: 'Phase 2: Configuration' },
+  { output: '  - Configure providers (GitHub, Google)' },
+  { output: '  - Add NEXTAUTH_SECRET to .env' },
+  { output: '' },
+  { output: 'Phase 3: Integration' },
+  { output: '  - Wrap layout with SessionProvider' },
+  { output: '  - Add useSession hook to navbar' },
+  { output: '' },
+  { output: 'Approve plan? [Yes] [Edit] [Cancel]', color: '#febc2e' },
+]} />
+
+שימוש: לפני כל משימה גדולה. ראו את התוכנית, אשרו, אז בצעו.
+
+### /simplify — פשטו קוד מורכב
+
+<Terminal title="claude" lines={[
+  { prompt: '>', command: '/simplify' },
+  { output: '' },
+  { output: 'Selected: getUserPermissions() function (47 lines)' },
+  { output: '' },
+  { output: 'Simplified version: 12 lines', color: '#28c840' },
+  { output: '  - Removed redundant checks' },
+  { output: '  - Merged nested conditions' },
+  { output: '  - Same behavior, verified by tests', color: '#28c840' },
+  { output: '' },
+  { output: 'Apply? [Yes] [No]', color: '#febc2e' },
+]} />
+
+### /context — ראו כמה context נשרף
+
+<Terminal title="claude" lines={[
+  { prompt: '>', command: '/context' },
+  { output: '' },
+  { output: 'Context Window: ████████░░ 78% used', color: '#febc2e' },
+  { output: '  Used:      121,840 / 156,000 tokens' },
+  { output: '  Remaining:  34,160 tokens' },
+]} />
+
+### /compact — דחסו היסטוריה
+
+<Terminal title="claude" lines={[
+  { prompt: '>', command: '/compact' },
+  { output: '' },
+  { output: 'Compressing... freed 94,000 tokens ✓', color: '#28c840' },
+]} />
+
+ראו פירוט מלא בעמוד [Stateless + /compact](/part3-claude-code/stateless).
+
+### /usage — ראו עלות session
+
+<Terminal title="claude" lines={[
+  { prompt: '>', command: '/usage' },
+  { output: '' },
+  { output: 'Session usage:' },
+  { output: '  Input tokens:  45,230  ($0.14)' },
+  { output: '  Output tokens:  8,940  ($0.13)' },
+  { output: '  Total:                  $0.27', color: '#cc785c' },
+  { output: '' },
+  { output: 'Model: claude-sonnet-4-6' },
+]} />
+
+### /commit — commit חכם
+
+<Terminal title="claude" lines={[
+  { prompt: '>', command: '/commit' },
+  { output: '' },
+  { output: 'Changes detected:' },
+  { output: '  - Modified: app/auth/login.tsx' },
+  { output: '  - Added: app/api/auth/route.ts' },
+  { output: '' },
+  { output: 'Suggested message:' },
+  { output: '  "feat: add login page with NextAuth integration"', color: '#cc785c' },
+  { output: '' },
+  { output: 'Commit? [Yes] [Edit message] [Cancel]', color: '#febc2e' },
+]} />
+
+Claude מנתח את השינויים ומציע commit message תיאורי.
+
+<Callout emoji="💬">
+**טיפ — השתמשו ב-Plan Mode למשימות גדולות:**
+
+`/plan` → קראו את התוכנית → אשרו או ערכו → רק אז בצעו.
+
+אל תתנו ל-Claude Code לפרסטייל על ארכיטקטורה. Plan Mode מבטיח שאתם מסכימים על הכיוון לפני שנכתב שורת קוד אחת.
+</Callout>

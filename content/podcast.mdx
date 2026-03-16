@@ -1,0 +1,29 @@
+import AudioPlayer from '../app/_components/AudioPlayer'
+import { Tabs } from 'nextra/components'
+
+# האזינו לפודקאסט
+
+פודקאסט שמסכם את כל 5 חלקי הקורס — מהבסיס ועד לשליטה מתקדמת. מתאים להאזנה בדרכים, בזמן ריצה, או בכל זמן פנוי.
+
+<Tabs items={['עברית 🇮🇱', 'English 🇺🇸']}>
+  <Tabs.Tab>
+    <AudioPlayer
+      src="/audio/podcast-he.mp3"
+      title="מ-ChatGPT Copy-Paste לVibe Coding עם Claude Code — עברית"
+    />
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <AudioPlayer
+      src="/audio/podcast-en.mp3"
+      title="From ChatGPT Copy-Paste to Vibe Coding with Claude Code — English"
+    />
+  </Tabs.Tab>
+</Tabs>
+
+## מה מכוסה בפודקאסט
+
+1. **חלק א׳ — יסודות**: Tokens, Context Window, ואיך AI באמת עובד מתחת למכסה המנוע
+2. **חלק ב׳ — הבעיה**: לולאת Copy-Paste, מה זה Vibe Coding ולמה זה שובר developers
+3. **חלק ג׳ — Claude Code**: ה-Agentic Loop, ארגז הכלים, הרשאות, CLAUDE.md, ובחירת מודל
+4. **חלק ד׳ — תכונות מתקדמות**: Sub-Agents, Hooks, Skills, MCP, context7, ו-OpenSpec
+5. **חלק ה׳ — שליטה מעשית**: היום הראשון, /simplify, הרגלי עבודה, טיפים ואבטחה

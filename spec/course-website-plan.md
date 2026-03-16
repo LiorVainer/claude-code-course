@@ -501,7 +501,7 @@ import { KeyMessage } from '../app/_components/KeyMessage'
 | כלי | תיאור | קישור / התקנה |
 |-----|-------|---------------|
 | **OpenSpec** | Spec Driven Development — תכנון לפני קוד | [github.com/Fission-AI/OpenSpec](https://github.com/Fission-AI/OpenSpec) / `npm i -g @fission-ai/openspec@latest` |
-| **context7** | MCP לתיעוד ספריות חי — פותר hallucinations | `npx ctx7 setup --claude` |
+| **context7** | MCP לדוקומנטציה מעודכנת של ספריות — פותר hallucinations | `npx ctx7 setup --claude` |
 | **Figma MCP** | עיצוב ישירות לקוד | [סרטון הדגמה](https://www.youtube.com/watch?v=Cq-7lFMNESk) |
 | **context-mode** | פלאגין לחיסכון Tokens אוטומטי (עד 98%) | `/plugin marketplace add mksglu/context-mode` |
 | **GitHub MCP** | PRs, Issues, ו-code search ישירות מ-Claude | MCP server — `github` |

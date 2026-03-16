@@ -1,0 +1,105 @@
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# הרגלי עבודה יומיומיים
+
+<Callout emoji="💡">
+שלושה הרגלים שיהפכו את העבודה עם Claude Code ליעילה יותר: ניהול context, גידול אורגני של CLAUDE.md, ומעקב אחרי שימוש.
+</Callout>
+
+## 1. ניהול Context — /compact
+
+### מתי להשתמש
+
+כאשר ה-context מגיע מעל 60%, Claude מתחיל "לשכוח" דברים שנאמרו בתחילת השיחה. בדקו:
+
+<Terminal title="context — בדיקת שימוש" lines={[
+  { prompt: '❯', command: '/context' },
+  { output: 'Context: 72% used (143k / 200k tokens)', color: '#febc2e' },
+]} />
+
+כאשר מעל 60% — הריצו `/compact`:
+
+<Terminal title="compact — דחיסת context" lines={[
+  { prompt: '❯', command: '/compact' },
+  { output: '→ Compressing conversation...', color: '#cc785c' },
+  { output: '✓ Context compressed successfully', color: '#28c840' },
+]} />
+
+Claude יסכם את השיחה בצורה יעילה ויפחית את ה-context תוך שמירת המידע החשוב.
+
+### דוגמה
+
+<Terminal title="context + compact — דוגמה מלאה" lines={[
+  { prompt: '❯', command: '/context' },
+  { output: 'Context: 78% (156k / 200k tokens)', color: '#febc2e' },
+  { prompt: '❯', command: '/compact' },
+  { output: 'Context compressed: 78% → 23% (46k / 200k tokens)', color: '#28c840' },
+  { output: 'Preserved: current task, key decisions, recent changes' },
+]} />
+
+## 2. CLAUDE.md — גידול אורגני
+
+### הגישה הנכונה
+
+אל תנסו לכתוב CLAUDE.md מושלם ביום הראשון. תנו לו לגדול באופן אורגני:
+
+| שבוע | שורות | תוכן |
+|---|---|---|
+| שבוע 1 | 20 שורות | conventions בסיסיות |
+| שבוע 2 | 35 שורות | הוספת rule אחרי שClaude טעה |
+| שבוע 3 | 50 שורות | עוד patterns שגיליתם |
+| שבוע 4 | 65 שורות | קובץ מדויק שמשקף את הפרויקט |
+
+### תהליך
+
+**כל פעם שClaude עושה משהו שגוי:**
+
+1. תקנו אותו
+2. הוסיפו rule ל-CLAUDE.md
+3. בפעם הבאה Claude לא יחזור על אותה טעות
+
+```markdown filename="CLAUDE.md" showLineNumbers
+# CLAUDE.md
+
+## Conventions
+- השתמש תמיד ב-TypeScript strict mode
+- כל function חייבת JSDoc comment
+- error messages בעברית, log messages באנגלית
+
+## Patterns
+- שמות קבצים: kebab-case
+- שמות components: PascalCase
+- API routes: /api/resource/[id]
+```
+
+## 3. /usage — מעקב שימוש
+
+<Terminal title="usage — מעקב שימוש" lines={[
+  { prompt: '❯', command: '/usage' },
+  { output: 'Weekly Usage Summary' },
+  { output: '──────────────────────────────' },
+  { output: 'Tokens used:     2.4M / 5M (48%)' },
+  { output: 'Messages sent:   127' },
+  { output: 'Files modified:  43' },
+  { output: 'Reset date:      March 22, 2026' },
+]} />
+
+<Callout emoji="💬">
+טיפ לפרומפטינג — שלושה עקרונות מרכזיים:
+
+1. **"Think thoroughly"** (לא "step-by-step") — "חשוב לעומק על הבעיה לפני שאתה מציע פתרון"
+
+2. **אמרו מה לעשות, לא מה לא** — במקום "אל תשתמש ב-any", אמרו "השתמש ב-types מפורשים"
+
+3. **Context מראש** — תארו את הסיטואציה לפני הבקשה
+</Callout>
+
+## טיפים נוספים
+
+| הרגל | תדירות | תועלת |
+|------|--------|--------|
+| /compact | כשמגיעים ל-60% context | שמירה על דיוק |
+| עדכון CLAUDE.md | אחרי כל טעות של Claude | שיפור מתמיד |
+| /usage | פעם בשבוע | מעקב אחרי הוצאות |
+| /context | בתחילת כל session | הבנת המצב |

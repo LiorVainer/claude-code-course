@@ -1,0 +1,90 @@
+import DiagramImage from '../../app/_components/DiagramImage'
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# context7 — דוקומנטציה מעודכנת
+
+<Callout emoji="💡">
+context7 הוא MCP server שפותר את בעיית ההלוצינציות: במקום להסתמך על נתוני האימון (שיכולים להיות מיושנים), Claude מושך דוקומנטציה מעודכנת ישירות מהמקור.
+</Callout>
+
+## הבעיה: נתוני אימון מיושנים
+
+מודלי AI מאומנים על נתונים עד תאריך מסוים. כאשר ספרייה משחררת גרסה חדשה, Claude עדיין יודע רק על הגרסה הישנה. זה גורם להלוצינציות — Claude כותב קוד שעבד בגרסה ישנה אבל לא בגרסה הנוכחית.
+
+## הפתרון: context7
+
+| | מקור מידע | תוצאה |
+|---|---|---|
+| ללא context7 | נתוני אימון (אולי מיושנים) | קוד עם שגיאות |
+| עם context7 | דוקומנטציה מעודכנת | קוד נכון |
+
+## התקנה
+
+<Terminal title="context7 — התקנה" lines={[
+  { prompt: '❯', command: 'npx ctx7 setup --claude' },
+  { output: '✓ context7 MCP server added to Claude Code', color: '#28c840' },
+]} />
+
+## זרימת העבודה — שני שלבים
+
+### שלב 1: resolve-library-id
+
+<Terminal title="context7 — resolve-library-id" lines={[
+  { prompt: '❯', command: 'אני רוצה לדעת את ה-ID של ספריית React' },
+  { output: 'resolve-library-id("react") → "/facebook/react"', color: '#28c840' },
+]} />
+
+### שלב 2: query-docs
+
+<Terminal title="context7 — query-docs" lines={[
+  { prompt: '❯', command: 'שאל את context7 על useEffect ב-/facebook/react' },
+  { output: 'query-docs("/facebook/react", "useEffect")' },
+  { output: '→ Fetching latest documentation...', color: '#cc785c' },
+]} />
+
+context7 מושך את התיעוד הרשמי העדכני ומחזיר לClaude.
+
+## דוגמה מלאה: שאילתת React useEffect
+
+<Terminal title="context7 — דוגמה מלאה: useEffect cleanup" lines={[
+  { prompt: '❯', command: 'כיצד משתמשים ב-useEffect לניקוי subscription?' },
+  { output: '' },
+  { output: 'Claude (עם context7):' },
+  { output: '1. resolve-library-id("react") → "/facebook/react"', color: '#cc785c' },
+  { output: '2. query-docs("/facebook/react", "useEffect cleanup")', color: '#cc785c' },
+  { output: '3. מחזיר קוד מהתיעוד הרשמי העדכני:', color: '#28c840' },
+  { output: '' },
+  { output: 'useEffect(() => {' },
+  { output: '  const subscription = subscribeToSomething()' },
+  { output: '' },
+  { output: '  return () => {' },
+  { output: '    subscription.unsubscribe() // cleanup function' },
+  { output: '  }' },
+  { output: '}, [dependency])' },
+]} />
+
+## השפעה על איכות הקוד
+
+| מצב | איכות |
+|-----|--------|
+| ללא context7 | Claude מנחש על בסיס אימון ישן |
+| עם context7 | Claude משתמש בתיעוד הרשמי העדכני |
+
+## ספריות נפוצות שנתמכות
+
+- React, Next.js, Vue, Angular
+- Tailwind CSS, shadcn/ui
+- Prisma, Drizzle ORM
+- TypeScript, Zod
+- ועוד אלפי ספריות
+
+<Callout emoji="💬">
+טיפ: כאשר עובדים עם ספרייה שמשתנה מהר (Next.js App Router, לדוגמה), תמיד כדאי להפעיל context7 כדי לקבל את ה-API הנכון.
+</Callout>
+
+<DiagramImage
+  src="/images/diagrams/context7-flow.png"
+  alt="זרימת context7 — resolve library ID ולאחר מכן query docs מהמקור הרשמי"
+  caption="context7: שני שלבים לדוקומנטציה מעודכנת"
+/>

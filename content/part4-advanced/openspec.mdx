@@ -1,0 +1,158 @@
+import DiagramImage from '../../app/_components/DiagramImage'
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# OpenSpec — Spec Driven Development
+
+## מה זה Spec Driven Development?
+
+AI מצוין ביצירת קוד, אבל גרוע בלדעת **מה** לבנות. בלי הנחיות ברורות, הוא מנחש — ולרוב מנחש לא נכון.
+
+**Spec Driven Development (SDD)** הוא מתודולוגיה שבה כותבים **מפרט (spec) לפני קוד**. ה-spec הופך למקור האמת — גם בשביל המפתח וגם בשביל ה-AI.
+
+> "A development approach where specs — not code — are the primary artifact. Specs describe intent in structured, testable language, and agents generate code to match them."
+
+[Birgitta Böckeler מ-Thoughtworks](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html) מגדירה שלוש רמות של SDD:
+
+1. **Spec-first** — כותבים spec לפני כל משימה, ואז עובדים לפיו
+2. **Spec-anchored** — ה-spec נשמר גם אחרי המימוש, ומשמש לתחזוקה ואבולוציה
+3. **Spec-as-source** — ה-spec הוא הקובץ הראשי. האדם עורך רק specs, לעולם לא קוד
+
+האנלוגיה הפשוטה: אדריכל מצייר תוכניות לפני שהבנאים מתחילים לבנות. SDD = תוכניות עבודה ל-AI.
+
+### השוואה: עם ובלי SDD
+
+| | ללא SDD | עם SDD |
+|---|---|---|
+| **תכנון** | "תעשה לי פיצ'ר" | Proposal → Design → Spec → Code |
+| **תוצאה** | AI מנחש מה רצית | AI יודע בדיוק מה לבנות |
+| **שינויים** | מתחילים מאפס | מעדכנים את ה-spec |
+| **תיעוד** | לא קיים | ה-spec הוא התיעוד |
+| **בדיקות** | מגלים באגים בדיעבד | acceptance criteria ברורים מראש |
+
+<Callout type="info">
+SDD = measure twice, cut once. הגדירו מה לבנות לפני שמתחילים לבנות.
+</Callout>
+
+---
+
+## OpenSpec — הכלי
+
+**OpenSpec** הוא כלי open-source שמיישם SDD עבור Claude Code (ו-20+ AI assistants נוספים). הוא מספק workflow מובנה של 4 שלבים שמוביל מרעיון למימוש.
+
+הפילוסופיה של OpenSpec:
+- **Agree before you build** — אדם ו-AI מסכימים על specs לפני שנכתב קוד
+- **Stay organized** — כל שינוי מקבל תיקייה משלו עם proposal, specs, design ו-tasks
+- **Work fluidly** — אפשר לעדכן כל artifact בכל זמן, בלי phase gates נוקשים
+
+### התקנה
+
+<Terminal title="התקנה" lines={[
+  { prompt: '❯', command: 'npm install -g @fission-ai/openspec@latest' },
+  { output: '✓ OpenSpec installed globally', color: '#28c840' },
+]} />
+
+### 4 שלבי העבודה
+
+<DiagramImage
+  src="/images/diagrams/openspec-4phases.png"
+  alt="ארבעת שלבי OpenSpec: Propose, Design, Spec, Implement"
+  caption="OpenSpec: ארבעה שלבים לפיתוח מונחה-מפרט"
+/>
+
+**1. Propose** — מגדירים מה ולמה → `proposal.md`
+
+**2. Design** — מחליטים איך מבחינה טכנית → `design.md`
+
+**3. Spec** — כותבים דרישות מפורטות עם scenarios → `specs/*.md`
+
+**4. Apply** — Claude Code מממש לפי ה-specs → `tasks.md` עם checklist
+
+---
+
+## מדריך צעד אחר צעד
+
+### שלב 1: אתחול בפרויקט
+
+<Terminal title="openspec — init" lines={[
+  { prompt: '❯', command: 'cd your-project' },
+  { prompt: '❯', command: 'openspec init' },
+  { output: '✓ Created openspec/ folder structure', color: '#28c840' },
+]} />
+
+הפקודה יוצרת את תיקיית `openspec/` עם ה-structure הדרוש.
+
+### שלב 2: הצעת שינוי (Propose)
+
+<Terminal title="openspec — propose" lines={[
+  { prompt: '❯', command: '/opsx:propose add-user-auth' },
+  { output: '→ Generating proposal...', color: '#cc785c' },
+  { output: 'Created openspec/changes/add-user-auth/', color: '#8b949e' },
+  { output: '✓ proposal.md — why we\'re doing this, what\'s changing', color: '#28c840' },
+  { output: '✓ specs/       — requirements and scenarios', color: '#28c840' },
+  { output: '✓ design.md    — technical approach', color: '#28c840' },
+  { output: '✓ tasks.md     — implementation checklist', color: '#28c840' },
+]} />
+
+Claude יוצר `proposal.md` שמגדיר:
+- **למה** עושים את השינוי
+- **מה** ישתנה במערכת
+- **מה** היכולות החדשות
+
+עכשיו תקראו את ה-proposal ותוודאו שהוא תואם את מה שרציתם.
+
+### שלב 3: עיצוב טכני (Design)
+
+Claude יוצר `design.md` עם החלטות טכניות:
+- אילו קבצים ייווצרו או ישתנו
+- אילו APIs יוגדרו
+- אילו dependencies יתווספו
+- ארכיטקטורה ותלויות בין רכיבים
+
+אתם סוקרים ומתאימים — זה השלב לוויכוחים על ארכיטקטורה, לא אחרי שנכתבו 500 שורות קוד.
+
+### שלב 4: מפרט מפורט (Spec)
+
+Claude יוצר תיקיית `specs/` עם דרישות מפורטות. כל דרישה כוללת:
+- תיאור ברור של ההתנהגות
+- **WHEN/THEN scenarios** — תרחישים מדויקים
+- Edge cases ו-acceptance criteria
+
+### שלב 5: מימוש (Apply)
+
+<Terminal title="openspec — apply" lines={[
+  { prompt: '❯', command: '/opsx:apply' },
+  { output: '→ Implementing tasks...', color: '#cc785c' },
+  { output: '✓ 1.1 Add auth context provider', color: '#28c840' },
+  { output: '✓ 1.2 Create login component', color: '#28c840' },
+  { output: '✓ 2.1 Add API routes', color: '#28c840' },
+  { output: '✓ 2.2 Wire up OAuth flow', color: '#28c840' },
+  { output: 'All tasks complete!', color: '#28c840' },
+]} />
+
+Claude קורא את ה-specs ומממש task אחרי task. כל משימה מסומנת ב-`tasks.md` כשהיא מושלמת.
+
+<Callout type="info">
+**Context hygiene**: מומלץ לנקות את חלון ה-context לפני תחילת המימוש. OpenSpec עובד הכי טוב עם context נקי.
+</Callout>
+
+### שלב 6: ארכיון (Archive)
+
+<Terminal title="openspec — archive" lines={[
+  { prompt: '❯', command: '/opsx:archive' },
+  { output: '✓ Archived to openspec/changes/archive/2025-01-23-add-user-auth/', color: '#28c840' },
+  { output: 'Specs updated. Ready for the next feature.', color: '#8b949e' },
+]} />
+
+אחרי שהמימוש הושלם, הארכיון שומר את ה-specs להתייחסות עתידית ומנקה את תיקיית העבודה.
+
+---
+
+## קריאה נוספת
+
+- [Understanding Spec-Driven-Development](https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html) — מאמר מקיף של Birgitta Böckeler (Thoughtworks) על SDD, כולל השוואה בין כלים
+- [OpenSpec GitHub](https://github.com/Fission-AI/OpenSpec) — קוד מקור, דוקומנטציה, ו-Discord community
+
+<Callout type="info">
+SDD משנה את הדרך שבה עובדים עם AI — מ-"תתקן את זה" ל-"הנה התוכניות, תבנה לפי זה."
+</Callout>

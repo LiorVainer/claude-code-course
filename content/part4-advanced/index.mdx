@@ -1,0 +1,33 @@
+import VideoPlayer from '../../app/_components/VideoPlayer'
+import { Callout } from 'nextra/components'
+
+# חלק ד׳ — תכונות מתקדמות
+
+<Callout emoji="💡">
+בחלק הזה נצלול לתכונות המתקדמות של Claude Code: Sub-Agents לעבודה מקבילה, Hooks לשמירה על גבולות דטרמיניסטיים, Skills לשימוש חוזר בפרומפטים, MCP לחיבור כלים חיצוניים, context7 לדוקומנטציה מעודכנת, ו-OpenSpec לפיתוח מונחה-מפרט.
+</Callout>
+
+<VideoPlayer
+  src="/videos/part4-advanced.mp4"
+  title="חלק ד׳ — תכונות מתקדמות"
+  chapters={[
+    { time: 0, label: 'פתיחה' },
+    { time: 120, label: 'Sub-Agents — עבודה מקבילה' },
+    { time: 300, label: 'Hooks — גבולות דטרמיניסטיים' },
+    { time: 480, label: 'Skills — תבניות לשימוש חוזר' },
+    { time: 660, label: 'MCP — חיבור כלים חיצוניים' },
+    { time: 840, label: 'context7 בפעולה' },
+    { time: 1020, label: 'OpenSpec — פיתוח מונחה-מפרט' },
+  ]}
+/>
+
+## מה תלמדו בחלק הזה
+
+| נושא | מה זה | למה חשוב |
+|------|--------|----------|
+| Sub-Agents | Claude מריץ instances נוספים במקביל | עבודה מהירה על משימות מורכבות |
+| Hooks | פקודות shell שרצות על אירועים | גבולות דטרמיניסטיים — לא תלויים ב-AI |
+| Skills | תבניות פרומפט שנטענות לפי דרישה | חיסכון ב-tokens, שימוש חוזר |
+| MCP | פרוטוקול לחיבור AI לכלים חיצוניים | אינטגרציה עם GitHub, Figma ועוד |
+| context7 | דוקומנטציה מעודכנת של ספריות מה-MCP | פותר הלוצינציות בקוד |
+| OpenSpec | Spec Driven Development | תכננו לפני שאתם כותבים קוד |

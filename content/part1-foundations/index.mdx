@@ -1,0 +1,25 @@
+import { Callout } from 'nextra/components'
+import VideoPlayer from '../../app/_components/VideoPlayer'
+
+# חלק א׳ — יסודות: Tokens ו-Context Window
+
+<Callout emoji="💡">
+  לפני שנגע בכלי AI כלשהו, צריך להבין שני מושגים. בלי הבנה שלהם, כל מה שנלמד אחר כך ירגיש כמו קסם במקום הנדסה.
+</Callout>
+
+<VideoPlayer
+  src="/videos/part1.mp4"
+  title="חלק א׳ — יסודות: Tokens ו-Context Window"
+  chapters={[
+    { time: 0, label: "מה זה Token?" },
+    { time: 120, label: "קוד הוא יקר" },
+    { time: 240, label: "Context Window" },
+    { time: 360, label: "סיכום" },
+  ]}
+/>
+
+## מה נלמד בחלק זה
+
+- **Tokens** — יחידת הבסיס של כל מודל שפה. לא מילה, לא תו — משהו ביניהם.
+- **Context Window** — ה"זיכרון העבודה" של המודל. כמו RAM: יש לו גבול, וכשמתמלא — הביצועים נפגעים.
+- **למה ההבנה הזו הופכת אתכם לטובים פי 10** — מי שמבין Tokens מנסח פרומפטים יעילים יותר, חוסך כסף, ומקבל תשובות טובות יותר.

@@ -1,0 +1,53 @@
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# Stateless + /compact — ניהול ה-Context Window
+
+## כל הודעה מעבדת את כל ההיסטוריה מחדש
+
+Claude Code הוא stateless. בכל הודעה שאתם שולחים, המודל מקבל את כל הצ׳אט מהתחלה — כל שאלה, כל תשובה, כל קוד. ככל שהשיחה ארוכה יותר, כך יותר tokens נשרפים בכל הודעה.
+
+**המשמעות:**
+- שיחה ארוכה = יותר tokens = עלות גבוהה יותר
+- כשה-context window מתמלא — Claude מתחיל "לשכוח" חלקים מוקדמים
+- ביצועים יורדים ככל שההיסטוריה גדלה
+
+## /compact — דחסו לפני שזה מתמלא
+
+`/compact` מסכם את ההיסטוריה הארוכה לתקציר קצר, ומשחרר מקום ב-context window.
+
+**דוגמה:**
+
+<Terminal title="claude" lines={[
+  { prompt: '>', command: '/context' },
+  { output: '' },
+  { output: 'Context Window Usage:' },
+  { output: '  Used:      121,840 tokens (78%)' },
+  { output: '  Remaining:  33,160 tokens (22%)' },
+  { output: '  ⚠️  Warning: approaching limit', color: '#febc2e' },
+  { output: '' },
+  { prompt: '>', command: '/compact' },
+  { output: '' },
+  { output: 'Compressing conversation history...' },
+  { output: '  Before: 156,000 tokens' },
+  { output: '  After:   62,000 tokens' },
+  { output: '  Freed:   94,000 tokens ✓', color: '#28c840' },
+  { output: '' },
+  { output: 'Summary saved. Continuing with compressed context.', color: '#28c840' },
+]} />
+
+**כלל אצבע:** אל תחכו עד שה-context מלא. עשו `/compact` כל כמה משימות — לפני שמתחילים task חדש וגדול.
+
+## Auto Memory שורד בין sessions
+
+בניגוד להיסטוריית הצ׳אט שנמחקת בסוף session, ה-Auto Memory של Claude Code נשמר בין sessions.
+
+| מה | שורד? |
+|----|--------|
+| היסטוריית הצ׳אט | לא — מתאפסת בתחילת session חדש |
+| Auto Memory (`/memory`) | כן — שמור בין sessions |
+| CLAUDE.md | כן — קובץ קבוע בפרויקט |
+
+<Callout emoji="💡">
+חשבו על `/compact` כמו `git commit` — עשו אותו בנקודות עצירה טבעיות. סיימתם feature אחד ומתחילים הבא? `/compact` קודם. זה ישמור את ה-context חד ורלוונטי.
+</Callout>
