@@ -104,9 +104,21 @@ print(json.dumps({"decision": "approve"}))
 | הרשאות מינימליות בהתחלה | הבינו לפני שאתם סומכים |
 | Allowlist לצוות | עקביות ושקיפות |
 
+## לגבי `--dangerously-skip-permissions`
+
+הדגל `--dangerously-skip-permissions` מבטל את **כל** בדיקות ההרשאות — Claude יכול לעשות הכל בלי לשאול. אפשר להשתמש בו **על אחריותכם** אם באמת נמאס לכם מאישורים חוזרים, גם אחרי שהגדרתם allowlist ב-settings.
+
+<Callout type="warning">
+השתמשו **רק** בסביבת פיתוח מקומית, **אף פעם** לא ב-production. בלי sandbox מבודד, הדגל הזה חושף אתכם לאובדן נתונים, שגיאות מערכת, או prompt injection. מומלץ לשלב עם sandboxing אם אפשר.
+</Callout>
+
 ## מה לא לעשות
 
-- **אל תתנו** `--dangerously-skip-permissions` בprod
+- **אל תשתמשו** ב-`--dangerously-skip-permissions` ב-production או על שרתים
 - **אל תשמרו** API keys בקבצים שClaude קורא
 - **אל תאשרו** פקודות Bash שאתם לא מבינים
 - **אל תתקינו** Skills ממקורות לא מוכרים
+
+<Callout emoji="📖">
+  לתיעוד הרשמי המלא: [Permissions — Claude Code Docs](https://code.claude.com/docs/en/permissions)
+</Callout>

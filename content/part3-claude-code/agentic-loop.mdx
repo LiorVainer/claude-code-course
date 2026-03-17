@@ -11,6 +11,12 @@ import { Callout } from 'nextra/components'
 
 אם לא סיים — חוזר לתחילת הלולאה.
 
+<DiagramImage
+    src="/images/diagrams/agentic-loop.svg"
+    alt="תרשים הלולאה האג׳נטית של Claude Code"
+    caption="הלולאה: חשיבה → בחירת כלי → הפעלה → תצפית → המשך או סיום"
+/>
+
 ## דוגמה: "תקן את הטסט הנכשל ב-auth.test.ts"
 
 | שלב | פעולה | כלי |
@@ -24,15 +30,7 @@ import { Callout } from 'nextra/components'
 
 **6 קריאות לכלים. כל אחת גלויה. כל אחת מחכה לאישור שלכם.**
 
-## כל פעולה גלויה — כל פעולה צריכה אישור
-
-זה ההבדל הגדול מ-ChatGPT. Claude Code לא פועל מאחורי הקלעים. אתם רואים בדיוק מה הוא עושה, ויכולים לעצור בכל שלב.
-
-<DiagramImage
-  src="/images/diagrams/agentic-loop.png"
-  alt="תרשים הלולאה האג׳נטית של Claude Code"
-  caption="הלולאה: חשיבה → בחירת כלי → הפעלה → תצפית → המשך או סיום"
-/>
+## טיפים חשובים
 
 <Callout emoji="💬">
 **טיפ — הנחו את בחירת הכלי:**
@@ -50,4 +48,8 @@ import { Callout } from 'nextra/components'
 הוסיפו לפרומפט: "אחרי התיקון, הרץ את הטסטים ואמת שהכל עובד."
 
 Claude Code יוסיף שלב Bash בסוף הלולאה ויאשר שהתיקון עבד — במקום להניח.
+</Callout>
+
+<Callout emoji="📖">
+  לתיעוד הרשמי המלא: [The Agentic Loop — Claude Code Docs](https://code.claude.com/docs/en/how-claude-code-works)
 </Callout>

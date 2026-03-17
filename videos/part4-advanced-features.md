@@ -27,6 +27,16 @@ Context ראשי 🧠 → משימת מחקר 📤 → Sub-Agent 🔍 → סיכ
 | Plan 📋 | תכנון מימוש — אסטרטגיה ופשרות. לא מבצע |
 | **Custom 🛠️** | **סוכנים שאתם יוצרים בתיקיית הפרויקט** |
 
+### יצירת Agent עם /agents
+
+הדרך הכי קלה ליצור agent מותאם אישית — פקודה אחת:
+
+❯ /agents
+  → Claude שואל: שם, תיאור, מודל, כלים, צבע
+  ✓ Agent נוצר ב-.claude/agents/
+
+לא צריך לכתוב קבצים ידנית — Claude יוצר הכל בשבילכם.
+
 ### דוגמה: סוכן מותאם אישית
 
 יוצרים קובץ בתיקיית הפרויקט — ו-Claude יודע להפעיל אותו
@@ -209,6 +219,20 @@ skills.sh — קטלוג פתוח של תוספים מוכנים מהקהילה.
   ✓ React Query Setup with Queries, Mutations, and Invalidation
   Source: github.com/tanstack/query/.../quick-start.md
 ```
+
+---
+
+## Plugins — חבילות מהקהילה
+
+Plugin = חבילה שמכילה שילוב של Skills + Hooks + MCP + Agents + Commands.
+במקום להתקין כל דבר בנפרד — plugin אחד מביא הכל.
+
+❯ /plugin
+  → גלישה ב-marketplace
+  → בחירת plugin
+  → התקנה בפקודה אחת
+
+דוגמה: context-mode plugin שחוסך עד 98% בtokens — כולל hooks, MCP server, ו-skills באריזה אחת.
 
 ---
 

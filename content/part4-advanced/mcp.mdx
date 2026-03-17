@@ -16,40 +16,79 @@ MCP הוא ה-API של עולם ה-AI לכלים חיצוניים — פרוטו
 |---|---|---|
 | אינטגרציה | כל מודל + כל כלי = integration מיוחד | כל מודל + כל כלי = חיבור אחיד |
 
-## התקנת context7 — דוגמה מהירה
+<DiagramImage
+  src="/images/diagrams/mcp-api.svg"
+  alt="דיאגרמת MCP כ-API — מודל AI מחובר לכלים חיצוניים דרך פרוטוקול אחיד"
+  caption="MCP: ה-API של AI לעולם החיצוני"
+/>
 
-<Terminal title="mcp — התקנת context7" lines={[
-  { prompt: '❯', command: 'npx ctx7 setup --claude' },
-  { output: '✓ context7 MCP server added to Claude Code', color: '#28c840' },
+## שרתי MCP נפוצים
+
+| שרת | שימוש |
+|-----|--------|
+| [context7](https://context7.com) | דוקומנטציה מעודכנת של ספריות |
+| [GitHub MCP](https://github.com/github/github-mcp-server) | קריאת issues, PRs, קוד |
+| [Figma MCP](https://github.com/GLips/Figma-Context-MCP) | עיצובים ישירות לקוד |
+| [Chrome DevTools MCP](https://github.com/nicobailon/chrome-devtools-mcp) | בדיקות, screenshots, אוטומציית דפדפן |
+| [Playwright MCP](https://github.com/nicobailon/playwright-mcp) | E2E testing ואוטומציית דפדפן |
+| [Elasticsearch MCP](https://github.com/elastic/mcp-server-elasticsearch) | חיפוש ושאילתות על Elasticsearch |
+| [Notion MCP](https://developers.notion.com/guides/mcp/get-started-with-mcp) | ניהול דפים, databases ותוכן ב-Notion |
+
+רוצים עוד? יש מאות שרתי MCP נוספים:
+- [Docker Hub MCP](https://hub.docker.com/mcp) — שרתים רשמיים ומאושרים על ידי Docker
+- [mcpservers.org](https://mcpservers.org/en) — קטלוג קהילתי מקיף של שרתי MCP
+
+### סרטון מומלץ
+
+<div style={{position:'relative',paddingBottom:'56.25%',height:0,margin:'1.5rem 0'}}>
+    <iframe
+        style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',borderRadius:'12px'}}
+        src="https://www.youtube.com/embed/bC3mIQWHZMQ"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+    />
+</div>
+
+## שני סוגים של MCP servers
+
+| סוג | איך עובד | דוגמאות | מתי |
+|-----|----------|---------|-----|
+| **Remote (HTTP)** | שרת מרוחק באינטרנט | context7, GitHub, Sentry | רוב הזמן — התקנה מהירה, תחזוקה אפס |
+| **Local (stdio)** | רץ על המחשב שלכם | כלי פנימי, database מקומי | כשצריך גישה למשאבים מקומיים |
+
+## התקנת MCP server
+
+**Remote** — רוב ה-MCP servers הפופולריים הם remote. מוסיפים בפקודה אחת:
+
+<Terminal title="mcp — התקנת remote server" lines={[
+  { prompt: '❯', command: 'claude mcp add --transport http context7 https://mcp.context7.com/mcp' },
+  { output: '✓ context7 added as remote MCP server', color: '#28c840' },
 ]} />
 
-הפקודה מוסיפה את context7 כ-MCP server ל-Claude Code.
+**Local** — לכלים שרצים על המחשב שלכם:
+
+<Terminal title="mcp — התקנת local server" lines={[
+  { prompt: '❯', command: 'claude mcp add --transport stdio my-db-tool npx my-db-mcp start' },
+  { output: '✓ my-db-tool added as local MCP server', color: '#28c840' },
+]} />
 
 ## בדיקת חיבורים פעילים
 
 <Terminal title="mcp — בדיקת חיבורים" lines={[
   { prompt: '❯', command: '/mcp' },
   { output: 'Connected MCP servers:' },
-  { output: '  ✓ context7', color: '#28c840' },
-  { output: '  ✓ github-mcp', color: '#28c840' },
+  { output: '  context7         · ✓ connected', color: '#28c840' },
+  { output: '  github            · ✓ connected', color: '#28c840' },
+  { output: '  figma             · △ needs authentication', color: '#febc2e' },
 ]} />
 
-מציג את כל ה-MCP servers המחוברים כרגע.
-
-## שרתי MCP נפוצים
-
-| שרת | שימוש |
-|-----|--------|
-| context7 | דוקומנטציה מעודכנת של ספריות |
-| GitHub MCP | קריאת issues, PRs, קוד |
-| Figma MCP | עיצובים ישירות לקוד |
-| Postgres MCP | שאילתות על database |
-| Slack MCP | שליחת הודעות ואינטגרציה |
+חלק מה-MCP servers דורשים authentication לפני שאפשר להשתמש בהם. במקרה כזה, עקבו אחרי ההוראות שיופיעו.
 
 ## Figma MCP — Design to Code
 
 <Callout emoji="💡">
-עם Figma MCP, Claude יכול לקרוא ישירות את הקומפוננטות מ-Figma ולהמיר אותן לקוד React. אין צורך לצלם screenshot ולהסביר — Claude רואה את ה-design tokens, מרווחים, וצבעים ישירות.
+עם Figma MCP מחובר Claude יכול לקרוא ישירות את הקומפוננטות מ-Figma ולהמיר אותן לקוד React. אין צורך לצלם screenshot ולהסביר — Claude רואה את ה-design tokens, מרווחים, וצבעים ישירות.
 </Callout>
 
 ### תהליך עבודה עם Figma MCP
@@ -62,21 +101,27 @@ MCP הוא ה-API של עולם ה-AI לכלים חיצוניים — פרוטו
 ### התקנת Figma MCP
 
 <Terminal title="mcp — התקנת Figma MCP" lines={[
-  { prompt: '❯', command: 'npx figma-mcp setup --claude' },
+  { prompt: '❯', command: 'claude mcp add --transport http figma-remote-mcp https://mcp.figma.com/mcp' },
   { output: '✓ Figma MCP server added to Claude Code', color: '#28c840' },
 ]} />
 
 לאחר מכן ב-Claude Code:
 
 <Terminal title="mcp — Figma prompt" lines={[
-  { prompt: '❯', command: 'קוד את הקומפוננט מהפריים הזה: https://www.figma.com/file/abc123/MyDesign?node-id=1:2' },
+  { prompt: '❯', command: 'תיצור את הקומפוננטה מהפריים הזה: https://www.figma.com/file/abc123/MyDesign?node-id=1:2' },
 ]} />
 
-<DiagramImage
-  src="/images/diagrams/mcp-api.svg"
-  alt="דיאגרמת MCP כ-API — מודל AI מחובר לכלים חיצוניים דרך פרוטוקול אחיד"
-  caption="MCP: ה-API של AI לעולם החיצוני"
-/>
+### סרטון מומלץ
+
+<div style={{position:'relative',paddingBottom:'56.25%',height:0,margin:'1.5rem 0'}}>
+  <iframe
+    style={{position:'absolute',top:0,left:0,width:'100%',height:'100%',borderRadius:'12px'}}
+    src="https://www.youtube.com/embed/Cq-7lFMNESk"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  />
+</div>
 
 ## יתרונות MCP
 
@@ -84,3 +129,7 @@ MCP הוא ה-API של עולם ה-AI לכלים חיצוניים — פרוטו
 - **אבטחה** — כל שרת מנהל הרשאות בנפרד
 - **הרחבה** — קל להוסיף כלים חדשים
 - **קהילה** — אלפי שרתים זמינים
+
+<Callout emoji="📖">
+  לתיעוד הרשמי המלא: [MCP — Claude Code Docs](https://code.claude.com/docs/en/mcp)
+</Callout>

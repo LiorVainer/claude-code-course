@@ -1,0 +1,53 @@
+import Terminal from '../../app/_components/Terminal'
+import { Callout } from 'nextra/components'
+
+# Plugins — תוספים מהקהילה
+
+<Callout emoji="💡">
+Plugin הוא חבילה שמכילה **אחד או יותר** מהרכיבים הבאים: Skills, Hooks, MCP servers, Agents ו-Commands.
+יש plugins שמכילים רק Skill בודד, ויש כאלה שמשלבים כמה רכיבים יחד. במקום להגדיר כל דבר בנפרד — מתקינים plugin אחד.
+</Callout>
+
+## מה יכול להיות ב-Plugin?
+
+Plugin מכיל **לפחות רכיב אחד** מהסוגים הבאים (לא חובה את כולם):
+
+| רכיב | תפקיד |
+|---|---|
+| Skills | פרומפטים לשימוש חוזר |
+| Hooks | אוטומציות דטרמיניסטיות |
+| MCP Servers | חיבור לכלים חיצוניים |
+| Agents | סוכנים מותאמים אישית |
+| Commands | פקודות slash מותאמות |
+
+## גלישה ב-Marketplace
+
+<Terminal title="plugins — marketplace" lines={[
+  { prompt: '❯', command: '/plugin' },
+  { output: '  Browse marketplace' },
+  { output: '  My installed plugins' },
+  { output: '  Create new plugin' },
+]} />
+
+## התקנת Plugin
+
+<Terminal title="plugins — התקנה" lines={[
+  { prompt: '❯', command: '/plugin marketplace add mksglu/context-mode' },
+  { output: '  ✓ Plugin context-mode installed successfully', color: '#28c840' },
+  { output: '    2 skills added' },
+  { output: '    1 hook added' },
+  { output: '    1 MCP server added' },
+]} />
+
+## Plugins מומלצים
+
+- **Code Intelligence Plugins** — plugins עבור שפות typed כמו TypeScript ו-Python, שמוסיפים navigation לסמלים ואיתור שגיאות אוטומטי אחרי עריכה.
+- **context-mode** — plugin שחוסך עד 98% בtokens על ידי ניהול חכם של נתונים גדולים מחוץ ל-context.
+
+<Callout emoji="📖">
+  לתיעוד הרשמי המלא: [Discover Plugins — Claude Code Docs](https://code.claude.com/docs/en/discover-plugins)
+</Callout>
+
+<Callout emoji="🔗">
+  לרשימת ה-plugins המאומתים על ידי Anthropic: [claude.com/plugins](https://claude.com/plugins)
+</Callout>

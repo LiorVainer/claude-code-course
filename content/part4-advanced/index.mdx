@@ -4,20 +4,22 @@ import { Callout } from 'nextra/components'
 # חלק ד׳ — תכונות מתקדמות
 
 <Callout emoji="💡">
-בחלק הזה נצלול לתכונות המתקדמות של Claude Code: Sub-Agents לעבודה מקבילה, Hooks לשמירה על גבולות דטרמיניסטיים, Skills לשימוש חוזר בפרומפטים, MCP לחיבור כלים חיצוניים, context7 לדוקומנטציה מעודכנת, ו-OpenSpec לפיתוח מונחה-מפרט.
+עד עכשיו למדתם את הבסיס — איך Claude Code חושב, מה הכלים שלו, ואיך לנהל Context.
+עכשיו נפתח את ארגז הכלים המלא: איך להריץ סוכנים במקביל, להגדיר גבולות אוטומטיים, להתקין תוספים מהקהילה, ולחבר את Claude לכל כלי חיצוני שתרצו.
 </Callout>
 
 <VideoPlayer
   src="/videos/part4-advanced.mp4"
   title="חלק ד׳ — תכונות מתקדמות"
   chapters={[
-    { time: 0, label: 'פתיחה' },
-    { time: 120, label: 'Sub-Agents — עבודה מקבילה' },
-    { time: 300, label: 'Hooks — גבולות דטרמיניסטיים' },
-    { time: 480, label: 'Skills — תבניות לשימוש חוזר' },
-    { time: 660, label: 'MCP — חיבור כלים חיצוניים' },
-    { time: 840, label: 'context7 בפעולה' },
-    { time: 1020, label: 'OpenSpec — פיתוח מונחה-מפרט' },
+    { time: 0, label: 'פתיחה — תכונות מתקדמות' },
+    { time: 8, label: 'Sub-Agents' },
+    { time: 63, label: 'Hooks' },
+    { time: 101, label: 'Skills — תבניות פרומפט לשימוש חוזר' },
+    { time: 175, label: 'MCP — Model Context Protocol' },
+    { time: 252, label: 'Plugins — חבילות מהקהילה' },
+    { time: 264, label: 'SDD / OpenSpec — תכננו לפני שכותבים קוד' },
+    { time: 297, label: 'סיכום — Claude Code זו פלטפורמה' },
   ]}
 />
 
@@ -25,9 +27,10 @@ import { Callout } from 'nextra/components'
 
 | נושא | מה זה | למה חשוב |
 |------|--------|----------|
-| Sub-Agents | Claude מריץ instances נוספים במקביל | עבודה מהירה על משימות מורכבות |
-| Hooks | פקודות shell שרצות על אירועים | גבולות דטרמיניסטיים — לא תלויים ב-AI |
-| Skills | תבניות פרומפט שנטענות לפי דרישה | חיסכון ב-tokens, שימוש חוזר |
-| MCP | פרוטוקול לחיבור AI לכלים חיצוניים | אינטגרציה עם GitHub, Figma ועוד |
-| context7 | דוקומנטציה מעודכנת של ספריות מה-MCP | פותר הלוצינציות בקוד |
-| OpenSpec | Spec Driven Development | תכננו לפני שאתם כותבים קוד |
+| Sub-Agents | Claude מריץ סוכנים נוספים במקביל | עבודה מהירה, כל אחד עם זיכרון נפרד |
+| Hooks | סקריפטים שרצים אוטומטית על אירועים | גבולות דטרמיניסטיים — תמיד יקרו |
+| Skills | קיצורי דרך לפרומפטים, נטענים לפי דרישה | חיסכון ב-tokens, עקביות |
+| MCP | ה-API של AI לעולם החיצוני | GitHub, Figma, databases ועוד |
+| context7 | דוקומנטציה מעודכנת לספריות | קוד נכון, בלי הלוצינציות |
+| Plugins | חבילות מהקהילה (skills+hooks+MCP) | התקנה בפקודה אחת |
+| OpenSpec | Spec Driven Development | תכננו לפני שכותבים קוד |

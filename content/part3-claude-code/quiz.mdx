@@ -1,8 +1,12 @@
 import QuizQuestion from '../../app/_components/QuizQuestion'
+import QuizScore from '../../app/_components/QuizScore'
 
 # בדקו את עצמכם — חלק ג׳
 
+<QuizScore total={7}>
+
 <QuizQuestion
+  number={1}
   question="כשאתם נותנים ל-Claude Code משימה, מה קורה?"
   options={[
     'הוא חושב בבת אחת ומוציא את כל הקוד',
@@ -17,6 +21,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={2}
   question="איזה כלי Claude Code משתמש בו כדי לקרוא קבצים?"
   options={[
     'Fetch',
@@ -31,6 +36,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={3}
   question="מה נכון לגבי קובץ CLAUDE.md?"
   options={[
     'צריך לטעון אותו ידנית בתחילת כל session',
@@ -45,7 +51,8 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
-  question="מה עושה /compact?"
+  number={4}
+  question="מה עושה compact/?"
   options={[
     'מדחס את קבצי הקוד בפרויקט',
     'מוחק את כל היסטוריית הצ׳אט',
@@ -53,12 +60,13 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
     'מדחס את קבצי ה-node_modules',
   ]}
   correctIndex={2}
-  explanation="/compact מסכם את ההיסטוריה הארוכה לתקציר קצר — לא מוחק, מסכם. זה משחרר tokens ומאפשר להמשיך לעבוד בלי לאבד את ההקשר. עשו /compact כל כמה משימות, לפני שה-context מתמלא."
+  explanation="compact/ מסכם את ההיסטוריה הארוכה לתקציר קצר — לא מוחק, מסכם. זה משחרר tokens ומאפשר להמשיך לעבוד בלי לאבד את ההקשר. עשו compact/ כל כמה משימות, לפני שה-context מתמלא."
   contentLink="/part3-claude-code/stateless"
   contentLabel="Stateless + /compact"
 />
 
 <QuizQuestion
+  number={5}
   question="לפי כלל 90/9/1, איזה מודל כדאי להשתמש בו לרוב עבודת הפיתוח היומית?"
   options={[
     'Haiku — הכי מהיר והכי זול',
@@ -71,3 +79,35 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
   contentLink="/part3-claude-code/models"
   contentLabel="משפחת המודלים"
 />
+
+<QuizQuestion
+  number={6}
+  question="מה ההבדל בין compact/ לבין clear/?"
+  options={[
+    'אין הבדל — שניהם מוחקים את ה-Context',
+    'compact/ מסכם את ההיסטוריה, clear/ מוחק הכל ומתחיל מחדש',
+    'clear/ מסכם, compact/ מוחק',
+    'שניהם רק משנים את שם הסשן',
+  ]}
+  correctIndex={1}
+  explanation="compact/ שומר על ההיסטוריה בצורה מסוכמת כדי לפנות מקום. clear/ מוחק הכל לגמרי — משתמשים בו כשמחליפים משימה."
+  contentLink="/part3-claude-code/stateless"
+  contentLabel="ניהול סשנים ו-Context"
+/>
+
+<QuizQuestion
+  number={7}
+  question="איך מפנים Claude לקובץ ספציפי ב-prompt?"
+  options={[
+    'כותבים את הנתיב המלא בטקסט חופשי',
+    'משתמשים ב-@ לפני שם הקובץ',
+    'גוררים את הקובץ לחלון',
+    'משתמשים בפקודת /read',
+  ]}
+  correctIndex={1}
+  explanation="סימן @ מאפשר להפנות Claude ישירות לקבצים, URLs, או תמונות. לדוגמה: @src/auth.ts"
+  contentLink="/part3-claude-code/commands"
+  contentLabel="Slash Commands"
+/>
+
+</QuizScore>

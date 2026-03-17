@@ -26,14 +26,15 @@ export default function HeroSection(_props: Record<string, never> = {}) {
   return (
     <section className="w-full py-10 sm:py-14 lg:py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
           {/* Text column */}
           <div dir="rtl" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '1rem' }}>
             <p className="text-sm font-medium tracking-wide text-primary uppercase">
               קורס למפתחי Full-Stack
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-snug">
-              🎓 מ-ChatGPT ל-Vibe Coding
+              🎓 מ-ChatGPT<br />
+              <span className="text-primary">ל-Vibe Coding</span>
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               למדו לעבוד עם Claude Code כמו ארכיטקטים — לא כמו מקלידנים.
@@ -41,12 +42,16 @@ export default function HeroSection(_props: Record<string, never> = {}) {
               5 חלקים, מיסודות ועד שליטה מעשית.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-              <Badge variant="secondary">5 סרטונים</Badge>
+              <Badge variant="secondary">סרטונים</Badge>
               <Badge variant="secondary">פודקאסט</Badge>
               <Badge variant="secondary">בחנים</Badge>
+              <Badge variant="secondary">דיאגרמות</Badge>
+              <Badge variant="secondary">טיפים ל-prompting</Badge>
+              <Badge variant="secondary">מדריך צעד-אחר-צעד</Badge>
+              <Badge variant="secondary">NotebookLM</Badge>
             </div>
-            <Link href="/part1-foundations">
-              <Button size="lg" className="text-base px-8 gap-2">
+            <Link href="/intro">
+              <Button size="lg" className="text-base px-8 mt-4 gap-2">
                 התחילו ללמוד
                 <ArrowLeft className="w-5 h-5" />
               </Button>

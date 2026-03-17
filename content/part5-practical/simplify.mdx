@@ -2,10 +2,10 @@ import DiagramImage from '../../app/_components/DiagramImage'
 import Terminal from '../../app/_components/Terminal'
 import { Callout } from 'nextra/components'
 
-# /simplify — סקירת קוד אוטומטית
+# simplify/ — סקירת קוד אוטומטית
 
 <Callout emoji="💡">
-/simplify מרים 3 sub-agents במקביל שמסקרים את הקוד שלכם מזוויות שונות. כל agent עובד בזיכרון נפרד — כמו לקבל 3 code reviews מקצועיים בו-זמנית.
+`/simplify` מרים 3 sub-agents במקביל שמסקרים את הקוד שלכם מזוויות שונות. כל agent עובד בזיכרון נפרד — כמו לקבל 3 code reviews מקצועיים בו-זמנית.
 </Callout>
 
 ## איך זה עובד?
@@ -40,27 +40,8 @@ import { Callout } from 'nextra/components'
 כל agent מסתכל על הקוד בעיניים טריות, ללא הנחות שנוצרו בשיחה הקודמת. זה מחקה את הדינמיקה של code review אמיתי שבו מפתח חיצוני מסתכל על הקוד.
 
 <Callout emoji="💡">
-טיפ: הריצו /simplify לפני כל PR. זה כמו לקחת 3 code reviewers מקצועיים לכל commit — בחינם ובלי לחכות.
+טיפ: הריצו `/simplify` לפני כל PR. זה כמו לקחת 3 code reviewers מקצועיים לכל commit — בחינם ובלי לחכות.
 </Callout>
-
-## דוגמת פלט
-
-<Terminal title="/simplify — תוצאות סקירה" lines={[
-  { output: '## סיכום סקירת /simplify' },
-  { output: '' },
-  { output: '### Agent 1 — איכות' },
-  { output: '⚠️  getUserData() לא מטפל ב-network error', color: '#febc2e' },
-  { output: '⚠️  חסר validation לפרמטר userId', color: '#febc2e' },
-  { output: '✅  error handling ב-login נראה טוב', color: '#28c840' },
-  { output: '' },
-  { output: '### Agent 2 — שימוש חוזר' },
-  { output: '💡  formatDate() מופיעה ב-3 קבצים — העבירו לutils/', color: '#cc785c' },
-  { output: '💡  fetchWithAuth pattern חוזר — שקלו custom hook', color: '#cc785c' },
-  { output: '' },
-  { output: '### Agent 3 — יעילות' },
-  { output: '⚡  users.map().filter() — אפשר לאחד לreduce()', color: '#febc2e' },
-  { output: '⚡  useEffect בלי dependencies array — יגרום לריצה בכל render', color: '#febc2e' },
-]} />
 
 ## מתי להשתמש
 
@@ -70,7 +51,7 @@ import { Callout } from 'nextra/components'
 - לפני deploy לproduction
 
 <DiagramImage
-  src="/images/diagrams/simplify-3agents.png"
+  src="/images/diagrams/simplify-3agents.svg"
   alt="תרשים /simplify — 3 sub-agents עובדים במקביל על איכות, שימוש חוזר ויעילות"
-  caption="/simplify: 3 agents מקבילים לסקירת קוד מקצועית"
+  caption="simplify: 3 agents מקבילים לסקירת קוד מקצועית"
 />

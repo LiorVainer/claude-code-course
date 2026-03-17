@@ -1,8 +1,12 @@
 import QuizQuestion from '../../app/_components/QuizQuestion'
+import QuizScore from '../../app/_components/QuizScore'
 
 # בדקו את עצמכם — חלק ב׳
 
+<QuizScore total={4}>
+
 <QuizQuestion
+  number={1}
   question="מה הגורם העיקרי לכישלון של לולאת ה-Copy-Paste?"
   options={[
     "ChatGPT לא חכם מספיק",
@@ -17,6 +21,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={2}
   question="מה הכוונה ב'Human Compiler' בהקשר של עבודה עם ChatGPT?"
   options={[
     "מפתח שכותב קוד ידני במקום AI",
@@ -31,6 +36,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={3}
   question="מה ההגדרה של Vibe Coding?"
   options={[
     "כתיבת קוד לפי תחושת בטן בלי תכנון",
@@ -45,6 +51,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={4}
   question="מי טבע את המונח 'Vibe Coding'?"
   options={[
     "Sam Altman, CEO של OpenAI",
@@ -57,3 +64,5 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
   contentLink="/part2-the-problem/vibe-coding"
   contentLabel="Vibe Coding"
 />
+
+</QuizScore>

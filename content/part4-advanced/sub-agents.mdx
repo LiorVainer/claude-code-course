@@ -1,4 +1,5 @@
 import DiagramImage from '../../app/_components/DiagramImage'
+import Terminal from '../../app/_components/Terminal'
 import { Callout } from 'nextra/components'
 
 # Sub-Agents — עבודה מקבילה
@@ -65,7 +66,61 @@ Agent ראשי
 כל agent עובד על אותו קוד אבל מזווית שונה, בו-זמנית.
 
 <DiagramImage
-  src="/images/diagrams/sub-agents-parallel.png"
+  src="/images/diagrams/sub-agents-parallel.svg"
   alt="דיאגרמת Sub-Agents — agent ראשי מרים שלושה sub-agents שעובדים במקביל ומחזירים תוצאות"
   caption="ארכיטקטורת Sub-Agents: עבודה מקבילה עם זיכרון מבודד"
 />
+
+## יצירת Agent מותאם אישית
+
+### הדרך הקלה: `/agents` — אשף אינטראקטיבי
+
+הפקודה `/agents` מפעילה אשף שמנחה אתכם צעד אחרי צעד ביצירת agent חדש:
+
+<Terminal title="/agents — יצירת agent" lines={[
+  { prompt: '❯', command: '/agents' },
+  { output: '  Creating new agent...' },
+  { output: '  Name: security-reviewer', color: '#cc785c' },
+  { output: '  Description: Reviews code for security vulnerabilities', color: '#cc785c' },
+  { output: '  Model: opus', color: '#cc785c' },
+  { output: '  Tools: Read, Grep, Glob, Bash', color: '#cc785c' },
+  { output: '  Color: red', color: '#cc785c' },
+  { output: '  ✓ Agent created at .claude/agents/security-reviewer.md', color: '#28c840' },
+]} />
+
+Claude מנחה אתכם דרך שם, תיאור, מודל, כלים וצבע — בלי צורך לזכור את הפורמט.
+
+### הדרך הידנית: קובץ בversion control
+
+לצוותים שרוצים שהagents יהיו חלק מהrepo ויעברו code review:
+
+```markdown filename=".claude/agents/security-reviewer.md" showLineNumbers
+---
+name: security-reviewer
+description: Reviews code for security vulnerabilities
+tools: Read, Grep, Glob, Bash
+model: opus
+---
+You are a senior security engineer. Review code for:
+- Injection vulnerabilities (SQL, XSS, command injection)
+- Authentication and authorization flaws
+- Secrets or credentials in code
+```
+
+### שימוש בAgent
+
+אחרי שיצרתם agent, אפשר לבקש מClaude להשתמש בו:
+
+<Terminal title="הפעלת agent מותאם" lines={[
+  { prompt: '❯', command: 'Use a subagent to review this code for security issues' },
+  { output: '  ⏳ Launching security-reviewer agent...' },
+  { output: '  ✓ Review complete — 2 issues found', color: '#28c840' },
+]} />
+
+<Callout emoji="💡">
+Agents מותאמים מאפשרים לשלב domain expertise ספציפי. במקום prompt ארוך בכל פעם, הגדירו agent פעם אחת והשתמשו בו שוב ושוב.
+</Callout>
+
+<Callout emoji="📖">
+  לתיעוד הרשמי המלא: [Sub-Agents — Claude Code Docs](https://code.claude.com/docs/en/sub-agents)
+</Callout>

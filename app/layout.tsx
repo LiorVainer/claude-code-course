@@ -1,4 +1,4 @@
-import { Footer, LastUpdated, Layout, Navbar } from 'nextra-theme-docs'
+import { Footer, Layout, Navbar } from 'nextra-theme-docs'
 import { Head, Search } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
@@ -39,7 +39,7 @@ const search = (
   />
 )
 
-const footer = <Footer>קורס Claude Code — {new Date().getFullYear()}</Footer>
+const footer = <Footer>© {new Date().getFullYear()} — כל הזכויות שמורות</Footer>
 
 export default async function RootLayout({
   children,
@@ -48,7 +48,14 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="he" dir="rtl" suppressHydrationWarning>
-      <Head />
+      <Head
+        color={{
+          hue: 18,
+          saturation: 53,
+          lightness: { light: 48, dark: 58 },
+        }}
+        backgroundColor={{ light: 'rgb(250,249,246)', dark: 'rgb(10,10,15)' }}
+      />
       <body>
         <NuqsAdapter>
           <Layout
@@ -70,7 +77,6 @@ export default async function RootLayout({
               light: 'בהיר',
               system: 'מערכת',
             }}
-            lastUpdated={<LastUpdated locale="he">עודכן לאחרונה ב-</LastUpdated>}
           >
             {children}
           </Layout>

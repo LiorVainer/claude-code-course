@@ -1,20 +1,28 @@
 import AudioPlayer from '../app/_components/AudioPlayer'
-import { Tabs } from 'nextra/components'
+import { Tabs, Callout } from 'nextra/components'
 
 # האזינו לפודקאסט
 
-פודקאסט שמסכם את כל 5 חלקי הקורס — מהבסיס ועד לשליטה מתקדמת. מתאים להאזנה בדרכים, בזמן ריצה, או בכל זמן פנוי.
+פודקאסט שמסכם את כל 5 חלקי הקורס בשיחה טבעית — מ-Tokens ו-Context Window ועד Sub-Agents ו-MCP. מתאים להאזנה בנסיעה, בריצה, או בכל זמן פנוי.
+
+<Callout>
+הפודקאסט הוא **דרך חלופית** לעבור על חומרי הקורס. אפשר לשלב אותו עם התוכן הכתוב, הסרטונים, וה-[NotebookLM](/notebooklm) — כל מדיה משלימה את האחרת. שימו לב שהפודקאסט עלול לפספס כמה פרטים טכניים שנמצאים בתוכן הכתוב, אז מומלץ להשלים עם קריאה בחלקים שמעניינים אתכם.
+</Callout>
+
+<Callout type="info" emoji="🤖">
+הפודקאסט נוצר באמצעות AI (NotebookLM של Google) ולא הוקלט על ידי בני אדם. הגרסה בעברית עלולה לכלול טעויות הגייה ולהישמע קצת מוזרה לפעמים — במיוחד במונחים טכניים. הגרסה באנגלית זורמת יותר טבעי.
+</Callout>
 
 <Tabs items={['עברית 🇮🇱', 'English 🇺🇸']}>
   <Tabs.Tab>
     <AudioPlayer
-      src="/audio/podcast-he.mp3"
+      src="/audio/podcast-he.m4a"
       title="מ-ChatGPT Copy-Paste לVibe Coding עם Claude Code — עברית"
     />
   </Tabs.Tab>
   <Tabs.Tab>
     <AudioPlayer
-      src="/audio/podcast-en.mp3"
+      src="/audio/podcast-en.m4a"
       title="From ChatGPT Copy-Paste to Vibe Coding with Claude Code — English"
     />
   </Tabs.Tab>
@@ -26,4 +34,10 @@ import { Tabs } from 'nextra/components'
 2. **חלק ב׳ — הבעיה**: לולאת Copy-Paste, מה זה Vibe Coding ולמה זה שובר developers
 3. **חלק ג׳ — Claude Code**: ה-Agentic Loop, ארגז הכלים, הרשאות, CLAUDE.md, ובחירת מודל
 4. **חלק ד׳ — תכונות מתקדמות**: Sub-Agents, Hooks, Skills, MCP, context7, ו-OpenSpec
-5. **חלק ה׳ — שליטה מעשית**: היום הראשון, /simplify, הרגלי עבודה, טיפים ואבטחה
+5. **חלק ה׳ — שליטה מעשית**: היום הראשון, `simplify/`, הרגלי עבודה, טיפים ואבטחה
+
+## רוצים יותר?
+
+- **תוכן מלא ומפורט** — עברו על [חמשת חלקי הקורס](/intro)
+- **שאלו שאלות וחקרו** — השתמשו ב-[NotebookLM](/notebooklm) כדי לשאול שאלות על כל נושא, לקבל סיכומים ממוקדים, וליצור סקירות קוליות מותאמות
+- **טיפים מהירים** — פתחו את ה-[Cheatsheet](/prompting-cheatsheet)

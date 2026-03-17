@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useQuizScore } from './QuizScore'
 
 const HE_REGEX = /[\u0590-\u05FF]/
 
@@ -14,6 +15,8 @@ interface QuizQuestionProps {
   explanation: string
   contentLink?: string
   contentLabel?: string
+  number?: number
+  onAnswer?: (correct: boolean) => void
 }
 
 type AnswerState = 'unanswered' | 'correct' | 'wrong'
@@ -25,14 +28,20 @@ export default function QuizQuestion({
   explanation,
   contentLink,
   contentLabel,
+  number,
+  onAnswer,
 }: QuizQuestionProps) {
   const [selected, setSelected] = useState<number | null>(null)
   const [answerState, setAnswerState] = useState<AnswerState>('unanswered')
+  const quizScore = useQuizScore()
 
   function handleSelect(index: number) {
     if (answerState !== 'unanswered') return
     setSelected(index)
-    setAnswerState(index === correctIndex ? 'correct' : 'wrong')
+    const isCorrect = index === correctIndex
+    setAnswerState(isCorrect ? 'correct' : 'wrong')
+    onAnswer?.(isCorrect)
+    quizScore?.reportAnswer(isCorrect)
   }
 
   function getButtonStyle(index: number): string {
@@ -49,7 +58,10 @@ export default function QuizQuestion({
   return (
     <Card className="my-4">
       <CardHeader>
-        <p className="font-semibold text-lg text-right">{question}</p>
+        <p className="font-semibold text-lg text-right">
+          {number != null && <span className="text-muted-foreground ml-2">#{number}</span>}
+          {question}
+        </p>
       </CardHeader>
       <CardContent className="space-y-2">
         {options.map((option, index) => (

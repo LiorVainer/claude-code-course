@@ -12,6 +12,8 @@
 | 6 | Vibe Coding Spectrum | `vibe-coding-spectrum.svg` | `vibe-coding-spectrum-dark.svg` | https://excalidraw.com/#json=e5JDrIGDeslvmZOxNHtO3,kkuNwjd2TeYNho_Lb_-Vcw |
 | 7 | context7 Flow | `context7-flow.svg` | `context7-flow-dark.svg` | https://excalidraw.com/#json=cfDDCTg6QSpo7Nij3wBcx,7eq2XSzbgwkZVsUfTwjEsw |
 | 8 | /simplify 3-Agent | `simplify-3agents.svg` | `simplify-3agents-dark.svg` | https://excalidraw.com/#json=Cxr5Yb9RWo9ItPizSEg6P,6XOZ-NjJgalvjWEE_aXEZQ |
+| 9 | Session Lifecycle | `session-lifecycle.svg` | `session-lifecycle-dark.svg` | https://excalidraw.com/#json=OUMJZHkZ61oOzpTAbysSM,ExsAa0fW5B6HYaTG5nwiJA |
+| 10 | Skills Lazy Loading | `skills-lazy-loading.svg` | `skills-lazy-loading-dark.svg` | https://excalidraw.com/#json=vM7gcIwCLdkgHrCk7r7wK,fpG72F0-lzz8OkePpxpgkg |
 
 ## File Location
 

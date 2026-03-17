@@ -14,7 +14,7 @@ export default function DiagramImage({ src, alt, caption }: DiagramImageProps) {
 
   return (
     <>
-      <Card className="my-4 overflow-hidden">
+      <Card className="my-8 overflow-hidden">
         <CardContent className="p-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           {/* Light mode image */}

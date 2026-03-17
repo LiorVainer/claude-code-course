@@ -4,7 +4,11 @@ import { Callout } from 'nextra/components'
 # חלק ג׳ — Claude Code
 
 <Callout emoji="💡">
-Claude Code הוא לא עוד צ׳אטבוט — זה סוכן AI שרץ בטרמינל שלכם, קורא קבצים, מריץ פקודות, ומתקן באגים. השיעור הזה מסביר איך הוא עובד, ואיך לעבוד איתו נכון.
+**Claude Code** הוא כלי agentic coding שפותח על ידי Anthropic — החברה שמפתחת את Claude. הוא חי בטרמינל שלכם, קורא קבצים, מריץ פקודות, עורך קוד ומתקן באגים — הכל ישירות בתוך הפרויקט. בניגוד לצ׳אטבוט רגיל, Claude Code פועל כסוכן AI עצמאי שמבין את ה-codebase שלכם ויכול לבצע משימות מורכבות בלולאה אג׳נטית. השיעור הזה מסביר איך הוא עובד, ואיך לעבוד איתו נכון.
+</Callout>
+
+<Callout emoji="🚀">
+**מומלץ להתקין את Claude Code לפני שממשיכים!** כדי לתרגל לצד ההסברים, התקינו Claude Code עכשיו באמצעות [המדריך הרשמי](https://code.claude.com/docs/en/overview). תצטרכו מנוי Pro/Max של Claude או API key. ככה תוכלו לנסות כל פקודה ותכונה שנלמד בחלקים הבאים בזמן אמת.
 </Callout>
 
 ## שלוש דרכים לדבר עם Claude
@@ -23,12 +27,25 @@ Claude Code הוא לא עוד צ׳אטבוט — זה סוכן AI שרץ בטר
   src="/videos/part3-claude-code.mp4"
   title="חלק ג׳ — Claude Code"
   chapters={[
-    { time: 0, label: 'מבוא — מה זה Claude Code?' },
-    { time: 120, label: 'הלולאה האג׳נטית' },
-    { time: 300, label: 'כלים (Tools)' },
-    { time: 480, label: 'הרשאות ואבטחה' },
-    { time: 660, label: 'CLAUDE.md — קובץ ה-Onboarding' },
-    { time: 840, label: 'משפחת המודלים' },
-    { time: 1020, label: 'Slash Commands' },
+    { time: 0, label: 'פתיחה — Claude Code' },
+    { time: 8, label: 'מה זה Claude Code?' },
+    { time: 39, label: 'הלולאה האג׳נטית' },
+    { time: 71, label: 'הכלים (Tools)' },
+    { time: 103, label: 'הרשאות ואבטחה' },
+    { time: 143, label: 'CLAUDE.md' },
+    { time: 196, label: 'משפחת המודלים' },
+    { time: 240, label: 'Slash Commands' },
+    { time: 270, label: 'סיכום — זה לא קסם, זה הנדסה' },
   ]}
 />
+
+## מה תלמדו בחלק הזה
+
+| נושא | מה זה | למה חשוב |
+|------|--------|----------|
+| הלולאה האג׳נטית | מחזור חשוב → כלי → ביצוע → תצפית | מבינים איך Claude Code חושב ואיך לכוון אותו |
+| הרשאות ואבטחה | שליטה מלאה בכל פעולה שהסוכן מבצע | בונים אמון בהדרגה — מאישור ידני ועד אוטומטי מלא |
+| CLAUDE.md | קובץ Onboarding שנטען אוטומטית לכל סשן | כללי פרויקט, טכנולוגיות ופקודות — במקום אחד |
+| Stateless + /compact | Claude Code לא זוכר בין הודעות — צריך לנהל Context | חוסכים Tokens, שומרים על איכות התשובות |
+| משפחת המודלים | Haiku, Sonnet, Opus — כל אחד למשימה אחרת | כלל 90/9/1 חוסך עד פי 50 בעלויות |
+| Slash Commands | /init, /plan, /compact, /clear, @references ועוד | הפקודות שתשתמשו בהן כל יום |

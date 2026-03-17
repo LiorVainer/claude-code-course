@@ -1,10 +1,14 @@
 import QuizQuestion from '../../app/_components/QuizQuestion'
+import QuizScore from '../../app/_components/QuizScore'
 
 # בדקו את עצמכם — חלק ד׳
 
 חמש שאלות על תכונות מתקדמות: Sub-Agents, Hooks, Skills, MCP, ו-OpenSpec.
 
+<QuizScore total={7}>
+
 <QuizQuestion
+  number={1}
   question="כאשר Claude מרים sub-agent, מה יש לאותו sub-agent גישה אליו?"
   options={[
     'כל היסטוריית השיחה הראשית',
@@ -19,6 +23,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={2}
   question="מה ההבדל המרכזי בין Hooks לבין הוראה רגילה ב-CLAUDE.md?"
   options={[
     'Hooks מהירים יותר',
@@ -33,6 +38,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={3}
   question="למה Skills משתמשות ב-lazy loading?"
   options={[
     'כי הן גדולות מדי לטעינה רגילה',
@@ -47,6 +53,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={4}
   question="איזו פקודה משתמשים להתקנת context7 כ-MCP server?"
   options={[
     'npm install context7',
@@ -61,6 +68,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={5}
   question="מהם 4 שלבי OpenSpec לפי הסדר הנכון?"
   options={[
     'Code → Test → Review → Deploy',
@@ -73,3 +81,35 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
   contentLink="/part4-advanced/openspec"
   contentLabel="OpenSpec"
 />
+
+<QuizQuestion
+  number={6}
+  question="מה Plugin מכיל?"
+  options={[
+    'רק Skills',
+    'רק MCP servers',
+    'שילוב של Skills, Hooks, MCP, Agents ו-Commands',
+    'רק Hooks',
+  ]}
+  correctIndex={2}
+  explanation="Plugin הוא חבילה שמאגדת מספר רכיבים יחד: Skills, Hooks, MCP servers, Agents ו-Commands. במקום להתקין כל רכיב בנפרד, מתקינים plugin אחד שמביא את כולם."
+  contentLink="/part4-advanced/plugins"
+  contentLabel="Plugins"
+/>
+
+<QuizQuestion
+  number={7}
+  question="איך מתקינים Plugin מה-marketplace?"
+  options={[
+    'npm install',
+    '/plugin marketplace add author/name',
+    'git clone',
+    '/install plugin',
+  ]}
+  correctIndex={1}
+  explanation="הפקודה /plugin marketplace add author/name היא הדרך להתקין plugin מה-marketplace של Claude Code."
+  contentLink="/part4-advanced/plugins"
+  contentLabel="Plugins"
+/>
+
+</QuizScore>

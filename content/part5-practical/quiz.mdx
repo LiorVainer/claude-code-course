@@ -1,11 +1,15 @@
 import QuizQuestion from '../../app/_components/QuizQuestion'
+import QuizScore from '../../app/_components/QuizScore'
 
 # בדקו את עצמכם — חלק ה׳
 
-חמש שאלות על שליטה מעשית: /simplify, /usage, context-mode, remote control, ואבטחה.
+חמש שאלות על שליטה מעשית: simplify/, usage/, context-mode, remote control, ואבטחה.
+
+<QuizScore total={6}>
 
 <QuizQuestion
-  question="כמה sub-agents מרים /simplify ומה הם בודקים?"
+  number={1}
+  question="כמה sub-agents מרים simplify/ ומה הם בודקים?"
   options={[
     'agent אחד שבודק הכל',
     '2 agents: bugs ו-performance',
@@ -13,13 +17,14 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
     '5 agents — אחד לכל חלק בקוד',
   ]}
   correctIndex={2}
-  explanation="/simplify מרים 3 sub-agents במקביל: Agent 1 בודק איכות (bugs, error handling), Agent 2 בודק שימוש חוזר (duplicate code), ו-Agent 3 בודק יעילות (performance)."
+  explanation="simplify/ מרים 3 sub-agents במקביל: Agent 1 בודק איכות (bugs, error handling), Agent 2 בודק שימוש חוזר (duplicate code), ו-Agent 3 בודק יעילות (performance)."
   contentLink="/part5-practical/simplify"
   contentLabel="/simplify"
 />
 
 <QuizQuestion
-  question="מה מציגה הפקודה /usage?"
+  number={2}
+  question="מה מציגה הפקודה usage/?"
   options={[
     'רשימת כל הקבצים שClaude שינה',
     'שימוש שבועי ב-tokens, מספר הודעות, ותאריך איפוס',
@@ -27,12 +32,13 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
     'לוג של כל הפקודות שהורצו',
   ]}
   correctIndex={1}
-  explanation="/usage מציגה את השימוש השבועי ב-tokens (ביחס לתקרה), מספר ההודעות שנשלחו, ותאריך האיפוס השבועי הבא."
+  explanation="usage/ מציגה את השימוש השבועי ב-tokens (ביחס לתקרה), מספר ההודעות שנשלחו, ותאריך האיפוס השבועי הבא."
   contentLink="/part5-practical/daily-habits"
   contentLabel="הרגלי עבודה"
 />
 
 <QuizQuestion
+  number={3}
   question="מה ה-plugin context-mode עושה ואיזה חיסכון הוא מספק?"
   options={[
     'דוחס קבצי קוד — חיסכון של 10%',
@@ -47,6 +53,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={4}
   question="כיצד Remote Control עובד — איפה הקוד נשמר?"
   options={[
     'הקוד מועלה לענן של Anthropic לצורך העיבוד',
@@ -61,6 +68,7 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
 />
 
 <QuizQuestion
+  number={5}
   question="מה הגישה המומלצת לאבטחת קבצי .env עם Claude Code?"
   options={[
     'לכתוב ב-CLAUDE.md "אל תיגע ב-.env"',
@@ -73,3 +81,20 @@ import QuizQuestion from '../../app/_components/QuizQuestion'
   contentLink="/part5-practical/security"
   contentLabel="אבטחה"
 />
+
+<QuizQuestion
+  number={6}
+  question="מה הטכניקה 'תנו ל-Claude לראיין אתכם'?"
+  options={[
+    'Claude שואל שאלות הבהרה לפני שמתחיל לעבוד',
+    'Claude מריץ ראיון עבודה',
+    'Claude בודק את הידע שלכם',
+    'Claude יוצר שאלות בוחן',
+  ]}
+  correctIndex={0}
+  explanation="לפני משימות מורכבות, אמרו ל-Claude: 'מה השאלות שלך לפני שאתה מתחיל?' — זה מבטיח שהוא מבין בדיוק מה צריך."
+  contentLink="/part5-practical/daily-habits"
+  contentLabel="הרגלי עבודה"
+/>
+
+</QuizScore>

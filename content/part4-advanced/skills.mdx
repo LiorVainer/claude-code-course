@@ -10,7 +10,40 @@ Skills הם תבניות פרומפט שנטענות רק כאשר צריך או
 
 ## מה זה Skill?
 
-Skill הוא קובץ Markdown שמכיל הוראות, תבניות, ופרומפטים לשימוש חוזר. במקום לכתוב את אותו הפרומפט שוב ושוב, אתם מגדירים Skill פעם אחת ומשתמשים בו בפקודה פשוטה.
+Skill הוא בעצם **קיצור דרך לפרומפט** או **פיסת ידע קטנה** — קובץ Markdown פשוט שClaude טוען כשקוראים לו. במקום לכתוב את אותו הפרומפט שוב ושוב, מגדירים Skill פעם אחת ומשתמשים בו בפקודה פשוטה.
+
+## איך Skill נראה מבפנים?
+
+הנה דוגמה מקוצרת של Skill אמיתי — [`requesting-code-review`](https://github.com/obra/superpowers/blob/main/skills/requesting-code-review/code-reviewer.md) (24.2K התקנות):
+
+```markdown filename="code-reviewer.md"
+# Code Review Agent
+
+You are reviewing code changes for production readiness.
+
+**Your task:**
+1. Review the implementation
+2. Compare against requirements
+3. Check code quality, architecture, testing
+4. Categorize issues by severity
+
+## Review Checklist
+
+**Code Quality:**
+- Clean separation of concerns?
+- Proper error handling?
+- Edge cases handled?
+
+**Testing:**
+- Tests actually test logic (not mocks)?
+- All tests passing?
+
+**Production Readiness:**
+- Backward compatibility?
+- Documentation complete?
+```
+
+זה הכל — קובץ Markdown עם הוראות. כש-Claude טוען את ה-Skill, הוא מקבל את הפרומפט הזה ישירות ל-Context ופועל לפיו. אין קוד, אין API — רק טקסט שמכוון את ה-AI.
 
 ## Lazy Loading — חיסכון ב-tokens
 
@@ -18,21 +51,29 @@ Skill הוא קובץ Markdown שמכיל הוראות, תבניות, ופרומ
 |---|---|---|
 | פרומפטים | בזיכרון תמיד → בזבוז tokens | נטענים רק כשקוראים להם → חיסכון משמעותי |
 
+<DiagramImage
+    src="/images/diagrams/skills-lazy-loading.svg"
+    alt="דיאגרמת lazy loading של Skills — Skills נטענות מה-disk לזיכרון רק כאשר מפעילים אותן"
+    caption="ארכיטקטורת Skills: lazy loading חוסך tokens"
+/>
+
 ## גילוי Skills מותקנות
 
 <Terminal title="skills — גילוי Skills מותקנות" lines={[
   { prompt: '❯', command: '/skills' },
   { output: 'Installed skills:' },
-  { output: '  cc10x/tdd' },
-  { output: '  cc10x/code-review' },
-  { output: '  mksglu/context-mode' },
+  { output: '  obra/superpowers@requesting-code-review   (24.2K installs)' },
+  { output: '  obra/superpowers@receiving-code-review    (19K installs)' },
+  { output: '  wshobson/agents@nextjs-app-router-patterns (8.6K installs)' },
+  { output: '  sergiodxa/agent-skills@frontend-react-best-practices (405 installs)' },
+  { output: '  jwilger/agent-skills@tdd                  (68 installs)' },
 ]} />
 
 הפקודה מציגה את כל ה-Skills המותקנות במכונה שלכם.
 
-## מדריך skills.sh — קהילה
+## הקטלוג הקהילתי — skills.sh
 
-[skills.sh](https://skills.sh) הוא הרפוזיטורי הקהילתי ל-Skills. תוכלו:
+[skills.sh](https://skills.sh) הוא הקטלוג הקהילתי ל-Skills. תוכלו:
 - לגלות Skills שאחרים כתבו
 - להוריד Skills שימושיות
 - לפרסם Skills שכתבתם
@@ -40,18 +81,18 @@ Skill הוא קובץ Markdown שמכיל הוראות, תבניות, ופרומ
 ## התקנת Skill
 
 <Terminal title="skills — התקנה" lines={[
-  { prompt: '❯', command: '/skill add author/skill-name' },
+  { prompt: '❯', command: 'npx skills add obra/superpowers@requesting-code-review' },
 ]} />
 
 לדוגמה:
 
 <Terminal title="skills — התקנת Skills קהילתיות" lines={[
-  { prompt: '❯', command: '/skill add cc10x/tdd' },
-  { output: '✓ Installed cc10x/tdd', color: '#28c840' },
-  { prompt: '❯', command: '/skill add cc10x/code-review' },
-  { output: '✓ Installed cc10x/code-review', color: '#28c840' },
-  { prompt: '❯', command: '/skill add mksglu/context-mode' },
-  { output: '✓ Installed mksglu/context-mode', color: '#28c840' },
+  { prompt: '❯', command: 'npx skills add obra/superpowers@requesting-code-review' },
+  { output: '✓ Installed obra/superpowers@requesting-code-review', color: '#28c840' },
+  { prompt: '❯', command: 'npx skills add wshobson/agents@nextjs-app-router-patterns' },
+  { output: '✓ Installed wshobson/agents@nextjs-app-router-patterns', color: '#28c840' },
+  { prompt: '❯', command: 'npx skills add jwilger/agent-skills@tdd' },
+  { output: '✓ Installed jwilger/agent-skills@tdd', color: '#28c840' },
 ]} />
 
 ## שימוש ב-Skill
@@ -59,10 +100,10 @@ Skill הוא קובץ Markdown שמכיל הוראות, תבניות, ופרומ
 לאחר ההתקנה, פשוט קוראים ל-Skill בשם:
 
 <Terminal title="skills — שימוש" lines={[
+  { prompt: '❯', command: '/requesting-code-review' },
+  { output: '# מפעיל את ה-code review skill' },
   { prompt: '❯', command: '/tdd' },
   { output: '# מפעיל את ה-TDD skill' },
-  { prompt: '❯', command: '/review' },
-  { output: '# מפעיל את ה-code review skill' },
 ]} />
 
 ## יתרונות Skills
@@ -74,8 +115,6 @@ Skill הוא קובץ Markdown שמכיל הוראות, תבניות, ופרומ
 | שיתוף צוות | כל חבר צוות משתמש באותן הגדרות |
 | גרסאות | ניהול גרסאות עם git |
 
-<DiagramImage
-  src="/images/diagrams/skills-lazy-loading.png"
-  alt="דיאגרמת lazy loading של Skills — Skills נטענות מה-disk לזיכרון רק כאשר מפעילים אותן"
-  caption="ארכיטקטורת Skills: lazy loading חוסך tokens"
-/>
+<Callout emoji="📖">
+  לתיעוד הרשמי המלא: [Skills — Claude Code Docs](https://code.claude.com/docs/en/skills)
+</Callout>

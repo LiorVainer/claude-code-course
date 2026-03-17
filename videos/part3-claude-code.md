@@ -218,12 +218,23 @@ Haiku ⚡ (נסו קודם) → Sonnet 🎯 (לא מספיק?) → Opus 🧠 (ה
 ❯ /compact
   ✓ Compressed: 90K → 32K tokens
 
+❯ /clear
+  ✓ Context cleared — fresh start
+
+/clear מוחק את כל ההיסטוריה ומתחיל מאפס. השתמשו בו כשמחליפים משימה.
+/compact מסכם. /clear מוחק. תדעו מתי להשתמש בכל אחד.
+
 ❯ /usage
   Current week: 13% used — Resets Mar 20
 
 ❯ /commit
   ✓ Committed: "Fix null check in auth middleware"
 ```
+
+### הפניה לקבצים עם @
+
+במקום להסביר "תסתכל על הקובץ auth.ts" — כתבו `@src/auth.ts` ו-Claude קורא אותו ישירות.
+גם תמונות: `Alt+V` להדבקת screenshot ישירות ל-prompt.
 
 ---
 

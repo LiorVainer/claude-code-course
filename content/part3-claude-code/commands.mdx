@@ -3,12 +3,18 @@ import { Callout } from 'nextra/components'
 
 # Slash Commands — הפקודות השימושיות
 
+<Callout emoji="💡">
+אפשר לעבור בין מצבים עם `Shift+Tab`: Normal Mode (ביצוע), Plan Mode (תכנון בלבד), ו-Accept Edits (אישור שינויים ידני).
+</Callout>
+
 ## הפקודות הנפוצות
 
-### /init — אתחל פרויקט חדש
+### `/init` — אתחל פרויקט חדש
+
+שימוש: בתחילת כל פרויקט חדש. Claude סורק את המבנה ויוצר CLAUDE.md ראשוני.
 
 <Terminal title="claude" lines={[
-  { prompt: '>', command: '/init' },
+  { prompt: '❯', command: '/init' },
   { output: '' },
   { output: 'Scanning project structure...' },
   { output: 'Creating CLAUDE.md with:' },
@@ -17,17 +23,17 @@ import { Callout } from 'nextra/components'
   { output: '  - Test command: npm test' },
   { output: '  - Build command: npm run build' },
   { output: '' },
-  { output: 'CLAUDE.md created ✓', color: '#28c840' },
+  { output: 'CLAUDE.md created', color: '#28c840' },
 ]} />
 
-שימוש: בתחילת כל פרויקט חדש. Claude סורק את המבנה ויוצר CLAUDE.md ראשוני.
+### `/plan` — תכנן לפני שתבצע
 
-### /plan — תכנן לפני שתבצע
+שימוש: לפני כל משימה גדולה. ראו את התוכנית, אשרו, אז בצעו.
 
 <Terminal title="claude" lines={[
-  { prompt: '>', command: '/plan "הוסף authentication עם NextAuth.js"' },
+  { prompt: '❯', command: '/plan "הוסף authentication עם NextAuth.js"' },
   { output: '' },
-  { output: '📋 Plan for: Add authentication with NextAuth.js', color: '#cc785c' },
+  { output: 'Plan for: Add authentication with NextAuth.js', color: '#cc785c' },
   { output: '' },
   { output: 'Phase 1: Setup' },
   { output: '  - Install next-auth package' },
@@ -44,12 +50,12 @@ import { Callout } from 'nextra/components'
   { output: 'Approve plan? [Yes] [Edit] [Cancel]', color: '#febc2e' },
 ]} />
 
-שימוש: לפני כל משימה גדולה. ראו את התוכנית, אשרו, אז בצעו.
+### `/simplify` — פשטו קוד מורכב
 
-### /simplify — פשטו קוד מורכב
+שימוש: בחרו פונקציה או קובץ ו-Claude יפשט אותו תוך שמירה על התנהגות זהה.
 
 <Terminal title="claude" lines={[
-  { prompt: '>', command: '/simplify' },
+  { prompt: '❯', command: '/simplify' },
   { output: '' },
   { output: 'Selected: getUserPermissions() function (47 lines)' },
   { output: '' },
@@ -61,30 +67,36 @@ import { Callout } from 'nextra/components'
   { output: 'Apply? [Yes] [No]', color: '#febc2e' },
 ]} />
 
-### /context — ראו כמה context נשרף
+### `/context` — ראו כמה context נשרף
+
+שימוש: כדי לבדוק כמה מה-Context Window שלכם מלא.
 
 <Terminal title="claude" lines={[
-  { prompt: '>', command: '/context' },
+  { prompt: '❯', command: '/context' },
   { output: '' },
-  { output: 'Context Window: ████████░░ 78% used', color: '#febc2e' },
+  { output: 'Context Window: 78% used', color: '#febc2e' },
   { output: '  Used:      121,840 / 156,000 tokens' },
   { output: '  Remaining:  34,160 tokens' },
 ]} />
 
-### /compact — דחסו היסטוריה
+### `/compact` — דחסו היסטוריה
+
+שימוש: כש-context מעל 60%. מסכם את ההיסטוריה ומפנה מקום.
 
 <Terminal title="claude" lines={[
-  { prompt: '>', command: '/compact' },
+  { prompt: '❯', command: '/compact' },
   { output: '' },
-  { output: 'Compressing... freed 94,000 tokens ✓', color: '#28c840' },
+  { output: 'Compressing... freed 94,000 tokens', color: '#28c840' },
 ]} />
 
-ראו פירוט מלא בעמוד [Stateless + /compact](/part3-claude-code/stateless).
+ראו פירוט מלא בעמוד [ניהול סשנים ו-Context](/part3-claude-code/stateless).
 
-### /usage — ראו עלות session
+### `/usage` — ראו עלות session
+
+שימוש: מעקב אחרי שימוש ב-tokens ועלויות.
 
 <Terminal title="claude" lines={[
-  { prompt: '>', command: '/usage' },
+  { prompt: '❯', command: '/usage' },
   { output: '' },
   { output: 'Session usage:' },
   { output: '  Input tokens:  45,230  ($0.14)' },
@@ -94,10 +106,12 @@ import { Callout } from 'nextra/components'
   { output: 'Model: claude-sonnet-4-6' },
 ]} />
 
-### /commit — commit חכם
+### `/commit` — commit חכם
+
+שימוש: Claude מנתח את השינויים ומציע commit message תיאורי.
 
 <Terminal title="claude" lines={[
-  { prompt: '>', command: '/commit' },
+  { prompt: '❯', command: '/commit' },
   { output: '' },
   { output: 'Changes detected:' },
   { output: '  - Modified: app/auth/login.tsx' },
@@ -109,12 +123,42 @@ import { Callout } from 'nextra/components'
   { output: 'Commit? [Yes] [Edit message] [Cancel]', color: '#febc2e' },
 ]} />
 
-Claude מנתח את השינויים ומציע commit message תיאורי.
+## מצבי עבודה — `Shift+Tab` למעבר ביניהם
 
-<Callout emoji="💬">
-**טיפ — השתמשו ב-Plan Mode למשימות גדולות:**
+Claude Code תומך בשלושה מצבים. לחצו `Shift+Tab` כדי לעבור ביניהם:
 
-`/plan` → קראו את התוכנית → אשרו או ערכו → רק אז בצעו.
+| מצב | מה עושה | מתי |
+|-----|---------|-----|
+| **Normal** | Claude מתכנן ומבצע | עבודה יומית |
+| **Plan Mode** | Claude מתכנן בלבד, לא מבצע | משימות גדולות — תכננו לפני |
+| **Accept Edits** | אתם מאשרים כל שינוי ידנית | קוד רגיש, סביבת production |
 
-אל תתנו ל-Claude Code לפרסטייל על ארכיטקטורה. Plan Mode מבטיח שאתם מסכימים על הכיוון לפני שנכתב שורת קוד אחת.
+## קלט עשיר — `@` ותמונות
+
+### הפניה לקבצים עם `@`
+
+הקלידו `@` ואחריו שם קובץ כדי להפנות את Claude ישירות לקובץ. Claude יקרא את הקובץ ויעבוד איתו — בלי שתצטרכו להעתיק-הדביק תוכן.
+
+דוגמאות:
+- `@src/auth.ts` — הפניה לקובץ ספציפי
+- `@package.json` — הפניה לקובץ קונפיגורציה
+- `@https://example.com/api` — הפניה ל-URL
+
+<Terminal title="claude" lines={[
+  { prompt: '❯', command: 'refactor the auth flow in @src/auth.ts to use JWT instead of sessions' },
+  { output: '  Reading src/auth.ts...' },
+  { output: '  Refactoring to JWT...', color: '#cc785c' },
+]} />
+
+### הדבקת תמונות
+
+השתמשו ב-`Alt+V` (Windows/Linux) או `Option+V` (Mac) כדי להדביק תמונה מה-clipboard ישירות לתוך הפרומפט.
+
+**מתי זה שימושי:**
+- צילום מסך של שגיאה — Claude רואה את ה-error ומתקן
+- עיצוב מ-Figma — Claude מייצר את ה-UI לפי המוקאפ
+- פלט טרמינל — קל יותר מלהעתיק טקסט ארוך
+
+<Callout emoji="📖">
+  לתיעוד הרשמי המלא: [CLI Reference — Claude Code Docs](https://code.claude.com/docs/en/cli-reference)
 </Callout>

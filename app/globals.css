@@ -140,26 +140,18 @@ nav[aria-label="table of contents"] p {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--muted-foreground);
   font-weight: 500;
 }
 
-/* h2 links — slightly smaller but keep semibold from Nextra */
+/* h2 links — slightly smaller */
 nav[aria-label="table of contents"] a {
   font-size: 0.8125rem;
-  color: var(--muted-foreground);
 }
 
-/* h3+ links (indented via x:ms-3) — lighter weight + smaller */
+/* h3+ links — lighter weight + smaller */
 nav[aria-label="table of contents"] li a:not(.x\:font-semibold) {
   font-size: 0.75rem;
   font-weight: 400;
-  opacity: 0.8;
-}
-
-nav[aria-label="table of contents"] a:hover {
-  color: var(--foreground);
-  opacity: 1;
 }
 
 /* Callouts — Terminal Meets Editorial theme */
@@ -198,5 +190,26 @@ nav[aria-label="table of contents"] a:hover {
 .nextra-callout[class*="x:bg-yellow"] {
   background: rgba(245, 158, 11, 0.08) !important;
   border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+/* Nextra Cards — RTL fixes + padding */
+[dir="rtl"] .nextra-cards a {
+  padding: 1rem 1.25rem;
+}
+
+/* Flip the arrow icon in RTL so it points left */
+[dir="rtl"] .nextra-cards a svg {
+  transform: scaleX(-1);
+}
+
+/* Compact footer */
+footer {
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+}
+
+/* Remove min-height that causes huge gap on landing and short pages */
+.x\:min-h-\[calc\(100vh-var\(--nextra-navbar-height\)\)\] {
+  min-height: unset !important;
 }
 
