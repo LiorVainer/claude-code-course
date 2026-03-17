@@ -13,7 +13,7 @@ const meta: MetaRecord = {
     },
   },
   intro: {
-    title: 'איך ללמוד את הקורס 🗺️',
+    title: 'מבוא 📖',
     theme: { timestamp: false },
   },
   'part1-foundations': {
