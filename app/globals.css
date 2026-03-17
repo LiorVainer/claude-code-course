@@ -46,7 +46,7 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   /* Terminal Meets Editorial custom colors */
-  --color-warm-accent: #cc785c;
+  --color-warm-accent: #DE7356;
   --color-success: #10b981;
   --color-code-surface: #1a1a2e;
 }
@@ -59,7 +59,7 @@
   --card-foreground: #1a1a2e;
   --popover: #ffffff;
   --popover-foreground: #1a1a2e;
-  --primary: #cc785c;
+  --primary: #DE7356;
   --primary-foreground: #ffffff;
   --secondary: #f0ece6;
   --secondary-foreground: #1a1a2e;
@@ -70,8 +70,8 @@
   --destructive: #ef4444;
   --border: #e4e0da;
   --input: #e4e0da;
-  --ring: #cc785c;
-  --chart-1: #cc785c;
+  --ring: #DE7356;
+  --chart-1: #DE7356;
   --chart-2: #10b981;
   --chart-3: #3b82f6;
   --chart-4: #8b5cf6;
@@ -79,12 +79,12 @@
   --radius: 0.625rem;
   --sidebar: #f5f3ef;
   --sidebar-foreground: #1a1a2e;
-  --sidebar-primary: #cc785c;
+  --sidebar-primary: #DE7356;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f0ece6;
   --sidebar-accent-foreground: #1a1a2e;
   --sidebar-border: #e4e0da;
-  --sidebar-ring: #cc785c;
+  --sidebar-ring: #DE7356;
 }
 
 /* Terminal Meets Editorial — Dark Mode */
@@ -95,7 +95,7 @@
   --card-foreground: #e4e4e7;
   --popover: #141420;
   --popover-foreground: #e4e4e7;
-  --primary: #cc785c;
+  --primary: #DE7356;
   --primary-foreground: #ffffff;
   --secondary: #1a1a2e;
   --secondary-foreground: #e4e4e7;
@@ -106,20 +106,20 @@
   --destructive: #ef4444;
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.15);
-  --ring: #cc785c;
-  --chart-1: #cc785c;
+  --ring: #DE7356;
+  --chart-1: #DE7356;
   --chart-2: #10b981;
   --chart-3: #3b82f6;
   --chart-4: #8b5cf6;
   --chart-5: #f59e0b;
   --sidebar: #0f0f18;
   --sidebar-foreground: #e4e4e7;
-  --sidebar-primary: #cc785c;
+  --sidebar-primary: #DE7356;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #1a1a2e;
   --sidebar-accent-foreground: #e4e4e7;
   --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #cc785c;
+  --sidebar-ring: #DE7356;
 }
 
 @layer base {
@@ -164,14 +164,14 @@ nav[aria-label="table of contents"] li a:not(.x\:font-semibold) {
 }
 
 .nextra-callout:where(:not([class*="x:bg-red"], [class*="x:bg-blue"], [class*="x:bg-yellow"], [class*="x:bg-purple"])) {
-  background: rgba(204, 120, 92, 0.08) !important;
-  border-color: rgba(204, 120, 92, 0.3) !important;
+  background: rgba(222, 115, 86, 0.08) !important;
+  border-color: rgba(222, 115, 86, 0.3) !important;
   color: inherit !important;
 }
 
 .dark .nextra-callout:where(:not([class*="x:bg-red"], [class*="x:bg-blue"], [class*="x:bg-yellow"], [class*="x:bg-purple"])) {
-  background: rgba(204, 120, 92, 0.1) !important;
-  border-color: rgba(204, 120, 92, 0.25) !important;
+  background: rgba(222, 115, 86, 0.1) !important;
+  border-color: rgba(222, 115, 86, 0.25) !important;
 }
 
 /* Error callouts — keep red but softer */

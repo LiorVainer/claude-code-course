@@ -85,10 +85,10 @@ function VideoPlayerInner({ src, title, poster, chapters }: VideoPlayerProps) {
 
         {/* Title bar + share */}
         <div className="flex items-center justify-between px-4 py-2 border-t">
-          <span className="text-sm text-muted-foreground">🎬 {title}</span>
+          <span className="text-sm text-foreground/70">🎬 {title}</span>
           <button
             onClick={() => void handleShare()}
-            className="text-xs px-2 py-1 rounded transition-colors text-muted-foreground hover:text-foreground"
+            className="text-xs px-2 py-1 rounded transition-colors text-foreground/70 hover:text-foreground cursor-pointer"
             title="שתפו קישור"
           >
             {copied ? 'הקישור הועתק ✓' : '🔗 שיתוף'}
@@ -98,7 +98,7 @@ function VideoPlayerInner({ src, title, poster, chapters }: VideoPlayerProps) {
         {/* Chapters */}
         {chapters && chapters.length > 0 && (
           <div className="px-4 pb-3 border-t">
-            <p className="text-xs font-semibold mb-2 mt-2 uppercase tracking-wide text-muted-foreground">
+            <p className="text-xs font-semibold mb-2 mt-2 uppercase tracking-wide text-foreground/60">
               פרקים
             </p>
             <ul className="space-y-1">
@@ -106,13 +106,13 @@ function VideoPlayerInner({ src, title, poster, chapters }: VideoPlayerProps) {
                 <li key={i}>
                   <button
                     onClick={() => seekTo(chapter, i)}
-                    className="w-full text-right flex items-center gap-3 px-2 py-1.5 rounded text-sm transition-colors hover:bg-muted"
+                    className="w-full text-right flex items-center gap-3 px-2 py-1.5 rounded text-sm transition-colors hover:bg-muted cursor-pointer"
                     style={{
                       color: activeChapter === i ? 'var(--primary)' : undefined,
                       fontWeight: activeChapter === i ? 600 : 400,
                     }}
                   >
-                    <span className="font-mono text-xs shrink-0 text-muted-foreground">
+                    <span className="font-mono text-xs shrink-0 text-foreground/60">
                       {formatTime(chapter.time)}
                     </span>
                     <span>{chapter.label}</span>

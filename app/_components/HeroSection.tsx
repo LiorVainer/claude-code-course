@@ -33,13 +33,20 @@ export default function HeroSection(_props: Record<string, never> = {}) {
               קורס למפתחי Full-Stack
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold leading-snug">
-              🎓 מ-ChatGPT<br />
-              <span className="text-primary">ל-Vibe Coding</span>
+              🎓 מסתם פרומפטים
+              <br />
+              <span className="text-primary">ל-Agentic Vibe Coding</span>
             </h1>
+
             <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-              הבינו מושגי AI חיוניים, למדו מהו Vibe Coding, ושלטו ב-Claude Code כמו ארכיטקטים.
-              <br className="hidden sm:block" />
-              5 חלקים — מיסודות ועד שליטה מעשית.
+              מעבר משימוש בסיסי ב-ChatGPT/Gemini
+              <br />
+              לעבודה מעשית עם Vibe Coding ו-Claude Code,
+              <br />
+              כלי אג׳נטי שמכיר את הפרויקט שלכם ויודע לבנות, לתקן ולשפר קוד בעצמו.
+              <br />
+              <br />
+              ב-5 חלקים, מהיסודות ועד שימוש אמיתי בפיתוח.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               <Badge variant="secondary">סרטונים</Badge>
