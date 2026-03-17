@@ -37,9 +37,9 @@ export default function HeroSection(_props: Record<string, never> = {}) {
               <span className="text-primary">ל-Vibe Coding</span>
             </h1>
             <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
-              למדו לעבוד עם Claude Code כמו ארכיטקטים — לא כמו מקלידנים.
+              הבינו מושגי AI חיוניים, למדו מהו Vibe Coding, ושלטו ב-Claude Code כמו ארכיטקטים.
               <br className="hidden sm:block" />
-              5 חלקים, מיסודות ועד שליטה מעשית.
+              5 חלקים — מיסודות ועד שליטה מעשית.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               <Badge variant="secondary">סרטונים</Badge>
@@ -50,10 +50,10 @@ export default function HeroSection(_props: Record<string, never> = {}) {
               <Badge variant="secondary">מדריך צעד-אחר-צעד</Badge>
               <Badge variant="secondary">NotebookLM</Badge>
             </div>
-            <Link href="/intro">
-              <Button size="lg" className="text-base px-8 mt-4 gap-2">
+            <Link href="/intro" className="group">
+              <Button size="lg" className="text-base px-8 h-12 mt-4 gap-2 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:scale-[1.03]">
                 התחילו ללמוד
-                <ArrowLeft className="w-5 h-5" />
+                <ArrowLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" />
               </Button>
             </Link>
           </div>
