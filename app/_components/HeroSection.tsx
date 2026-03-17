@@ -36,7 +36,7 @@ export default function HeroSection(_props: Record<string, never> = {}) {
               🎓 מ-ChatGPT<br />
               <span className="text-primary">ל-Vibe Coding</span>
             </h1>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-lg text-foreground/70 leading-relaxed">
               למדו לעבוד עם Claude Code כמו ארכיטקטים — לא כמו מקלידנים.
               <br className="hidden sm:block" />
               5 חלקים, מיסודות ועד שליטה מעשית.
