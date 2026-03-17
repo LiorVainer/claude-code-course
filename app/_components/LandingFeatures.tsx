@@ -54,9 +54,11 @@ const FEATURES: Feature[] = [
   },
 ]
 
-function FeatureCard({ feature }: { feature: Feature }) {
-  const content = (
-    <div className="group relative flex flex-col items-center text-center gap-3 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5">
+const cardClass = "group relative flex flex-col items-center justify-center md:justify-start text-center gap-3 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5"
+
+function CardContent({ feature }: { feature: Feature }) {
+  return (
+    <>
       <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
         <feature.icon className="size-6" />
       </div>
@@ -64,18 +66,28 @@ function FeatureCard({ feature }: { feature: Feature }) {
       <p className="text-sm text-muted-foreground leading-relaxed">
         {feature.description}
       </p>
-      {feature.href && (
-        <span className="text-xs text-primary font-medium opacity-0 translate-y-1 transition-all group-hover:opacity-100 group-hover:translate-y-0">
+      {feature.href ? (
+        <span className="text-xs text-primary hidden md:block font-medium opacity-0 translate-y-1 transition-all group-hover:opacity-100 group-hover:translate-y-0">
           <span className="inline-flex items-center gap-1.5">פתחו <span>←</span></span>
         </span>
-      )}
+      ) : null}
+    </>
+  )
+}
+
+function FeatureCard({ feature }: { feature: Feature }) {
+  if (feature.href) {
+    return (
+      <Link href={feature.href} className={cardClass}>
+        <CardContent feature={feature} />
+      </Link>
+    )
+  }
+  return (
+    <div className={cardClass}>
+      <CardContent feature={feature} />
     </div>
   )
-
-  if (feature.href) {
-    return <Link href={feature.href} className="block">{content}</Link>
-  }
-  return content
 }
 
 export default function LandingFeatures() {
