@@ -2,7 +2,7 @@ import type { MetaRecord } from 'nextra'
 
 const meta: MetaRecord = {
   index: {
-    title: 'ברוכים הבאים',
+    title: 'דף בית',
     theme: {
       layout: 'full',
       sidebar: false,
