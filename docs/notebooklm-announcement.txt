@@ -1,5 +1,5 @@
-ברוכים הבאים למחברת הקורס "מ-ChatGPT Copy-Paste ל-Vibe Coding עם Claude Code"! 🎓
+ברוכים הבאים למחברת הקורס "Agentic Vibe — מ-Copy-Paste ל-Vibe Coding עם Claude Code"! 🎓
 
-כאן תוכלו לשאול שאלות בשפה חופשית על כל נושא בקורס — Tokens, Context Window, Agentic Loop, MCP, Sub-Agents ועוד. ה-AI עונה על בסיס 28 מקורות: חומרי הקורס + התיעוד הרשמי של Claude Code.
+כאן תוכלו לשאול שאלות בשפה חופשית על כל נושא בקורס — Tokens, Context Window, Agentic Loop, MCP, Sub-Agents, Hooks, Skills, Plugins ועוד. ה-AI עונה על בסיס 30 מקורות: חומרי הקורס, התיעוד הרשמי של Claude Code, רפרנס לפקודות Slash, והשוואה ל-Gemini CLI.
 
-💡 פשוט כתבו שאלה למטה והתחילו לחקור!
+💡 שאלו כל שאלה — בעברית או באנגלית — והתחילו לחקור!

@@ -53,6 +53,10 @@ const meta: MetaRecord = {
     title: 'Cheatsheet 💬',
     theme: { timestamp: false },
   },
+  'gemini-cli': {
+    title: 'Gemini CLI 🔷',
+    theme: { timestamp: false },
+  },
 }
 
 export default meta

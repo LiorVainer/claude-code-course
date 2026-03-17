@@ -22,6 +22,46 @@ import { Callout } from 'nextra/components'
 
 לתיעוד הרשמי של Anthropic על prompting: [Prompt Engineering Guide](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
 
+## פקודות Claude Code
+
+רשימת הפקודות המרכזיות שנלמדו בקורס. לרשימה המלאה ראו [תיעוד רשמי](https://code.claude.com/docs/en/commands).
+
+| פקודה | תפקיד | היכן בקורס |
+|--------|--------|-----------|
+| `/init` | אתחול פרויקט — יוצר `CLAUDE.md` | [commands](/part3-claude-code/commands) |
+| `/plan` | מצב תכנון — תוכנית לפני ביצוע | [commands](/part3-claude-code/commands) |
+| `/simplify` | פישוט קוד עם 3 agents מקבילים | [simplify/](/part5-practical/simplify) |
+| `/context` | צפייה בשימוש ב-Context Window | [commands](/part3-claude-code/commands) |
+| `/compact` | דחיסת היסטוריה — פינוי tokens | [סשנים](/part3-claude-code/stateless) |
+| `/clear` | איפוס מלא של הסשן | [סשנים](/part3-claude-code/stateless) |
+| `/usage` | עלות ושימוש ב-tokens | [commands](/part3-claude-code/commands) |
+| `/cost` | מעקב עלויות מפורט | — |
+| `/stats` | סטטיסטיקות שימוש לאורך ימים, חלוקת מודלים | — |
+| `/commit` | commit חכם עם הודעה אוטומטית | [commands](/part3-claude-code/commands) |
+| `/model` | בחירת/החלפת מודל | — |
+| `/diff` | צפייה אינטראקטיבית בשינויים | — |
+| `/resume` | חידוש סשן קודם | [סשנים](/part3-claude-code/stateless) |
+| `/rename` | שינוי שם סשן | [סשנים](/part3-claude-code/stateless) |
+| `/memory` | עריכת קבצי `CLAUDE.md` | [CLAUDE.md](/part3-claude-code/claude-md) |
+| `/permissions` | ניהול הרשאות | — |
+| `/mcp` | ניהול MCP servers | [MCP](/part4-advanced/mcp) |
+| `/hooks` | צפייה ב-hooks מוגדרים | [Hooks](/part4-advanced/hooks) |
+| `/voice` | מצב קולי — דברו במקום להקליד | [טיפים](/part5-practical/tips) |
+| `/skills` | רשימת skills זמינים | [Skills](/part4-advanced/skills) |
+| `/plugin` | ניהול plugins | [טיפים](/part5-practical/tips) |
+| `/agents` | ניהול sub-agents | [Sub-Agents](/part4-advanced/sub-agents) |
+| `/fast` | מצב מהיר — אותו מודל, פלט מהיר | — |
+| `/effort` | רמת מאמץ (low/medium/high/max) | — |
+| `/rc` | שליטה מרחוק מהטלפון | [טיפים](/part5-practical/tips) |
+| `/btw` | שאלת צד בלי להוסיף להיסטוריה | — |
+| `Shift+Tab` | מעבר בין Normal / Plan / Accept Edits | [commands](/part3-claude-code/commands) |
+| `@file` | הפניה לקובץ בפרומפט | [commands](/part3-claude-code/commands) |
+| `Alt+V` | הדבקת תמונה מה-clipboard | [commands](/part3-claude-code/commands) |
+
+<Callout emoji="🔷">
+**עובדים עם Gemini CLI?** ראו [השוואת פקודות מלאה](/gemini-cli) — טבלה שממפה כל פקודה של Claude Code למקבילה שלה ב-Gemini CLI.
+</Callout>
+
 <Callout emoji="📖">
   לתיעוד הרשמי המלא: [Best Practices — Claude Code Docs](https://code.claude.com/docs/en/best-practices)
 </Callout>

@@ -1,0 +1,138 @@
+import { Callout } from 'nextra/components'
+
+# Gemini CLI — האלטרנטיבה של Google
+
+<Callout emoji="💡">
+Gemini CLI הוא כלי קוד בשורת הפקודה שפותח על ידי Google — מקבילה ישירה ל-Claude Code, אבל עם מודלים של Google (כמו Gemini).
+</Callout>
+
+## מה זה Gemini CLI?
+
+[Gemini CLI](https://github.com/nichochar/gemini-cli) הוא כלי open-source שמביא את היכולות של מודלים של Google ישירות לטרמינל שלכם — בדיוק כמו ש-Claude Code עושה עם Claude.
+
+הרעיון זהה: אתם כותבים פרומפט בשפה טבעית, וה-AI מבצע פעולות על הקוד — קריאת קבצים, עריכה, הרצת פקודות, ועוד. ההבדל המרכזי הוא ב-AI model שמאחורי הכלי.
+
+| | Claude Code | Gemini CLI |
+|------|-------------|------------|
+| **יצרן** | Anthropic | Google |
+| **מודל** | Claude (Sonnet, Opus, Haiku) | Gemini (Flash, Pro, Flash Lite) |
+| **שפת פיתוח** | TypeScript | TypeScript |
+| **רישיון** | Proprietary (חינמי עם מנוי) | Apache 2.0 (Open Source) |
+| **Context Window** | עד 1M tokens (Opus) | עד 1M tokens (Gemini) |
+| **קובץ זיכרון** | `CLAUDE.md` | `GEMINI.md` |
+
+## השוואת פקודות — Claude Code מול Gemini CLI
+
+הטבלה הבאה משווה את הפקודות שדיברנו עליהן בקורס לפקודות המקבילות ב-Gemini CLI:
+
+### פקודות ליבה
+
+| תפקיד | Claude Code | Gemini CLI | הערות |
+|--------|-------------|------------|-------|
+| עזרה | `/help` | `/help` או `/?` | זהה |
+| יציאה | `/exit` או `/quit` | `/quit` או `/exit` | זהה |
+| ניקוי מסך | `/clear` | `/clear` | ב-Claude Code מנקה גם היסטוריה, ב-Gemini רק את המסך |
+| אתחול פרויקט | `/init` | `/init` | Claude יוצר `CLAUDE.md`, Gemini יוצר `GEMINI.md` |
+| בחירת מודל | `/model` | `/model` | זהה |
+| ערכת נושא | `/theme` | `/theme` | זהה |
+
+### ניהול Context וסשנים
+
+| תפקיד | Claude Code | Gemini CLI | הערות |
+|--------|-------------|------------|-------|
+| דחיסת היסטוריה | `/compact` | `/compress` | אותו רעיון — מסכם שיחה כדי לפנות tokens |
+| צפייה ב-context | `/context` | — | ב-Gemini אין פקודה ייעודית |
+| חזרה אחורה | `/rewind` | `/rewind` או `/restore` | Gemini מפריד בין undo שיחה (`/rewind`) ל-undo קבצים (`/restore`) |
+| חידוש סשן | `/resume` | `/resume` או `/chat` | Gemini משתמש ב-`/chat` לניווט סשנים |
+
+### תכנון וביצוע
+
+| תפקיד | Claude Code | Gemini CLI | הערות |
+|--------|-------------|------------|-------|
+| מצב תכנון | `/plan` | `/plan` | שניהם תומכים ב-Plan Mode |
+| מעבר מצבים | `Shift+Tab` | — | ב-Claude Code יש מעבר מהיר בין Normal/Plan/Accept Edits |
+
+### כלים וניהול
+
+| תפקיד | Claude Code | Gemini CLI | הערות |
+|--------|-------------|------------|-------|
+| הרשאות | `/permissions` | `/permissions` | שניהם מנהלים trust levels |
+| MCP servers | `/mcp` | `/mcp` | שניהם תומכים ב-Model Context Protocol |
+| hooks | `/hooks` | `/hooks` | שניהם תומכים ב-event hooks |
+| Sub-agents | `/agents` | `/agents` | ב-Gemini סימון experimental |
+| Skills | `/skills` | `/skills` | Gemini קורא לזה Agent Skills |
+| פלאגינים | `/plugin` | `/extensions` | שם שונה, רעיון זהה |
+| IDE | `/ide` | `/ide` | שניהם תומכים באינטגרציה עם editors |
+
+### שימוש ומעקב
+
+| תפקיד | Claude Code | Gemini CLI | הערות |
+|--------|-------------|------------|-------|
+| סטטיסטיקות שימוש | `/stats` | `/stats` | שניהם מציגים שימוש לאורך ימים, חלוקת מודלים, וכלים |
+| עלות ושימוש | `/usage` או `/cost` | — | Claude Code מפריד בין סטטיסטיקות (`/stats`) לעלות (`/usage`) |
+| העתקה ללוח | `/copy` | `/copy` | זהה |
+| הגדרות | `/config` | `/settings` | שם שונה, אותו רעיון |
+| זיכרון פרויקט | `/memory` | `/memory` | שניהם מנהלים קבצי context (`CLAUDE.md` / `GEMINI.md`) |
+
+### פקודות ייחודיות ל-Claude Code
+
+| פקודה | תפקיד |
+|--------|--------|
+| `/commit` | commit חכם עם הודעה אוטומטית |
+| `/simplify` | פישוט קוד עם 3 agents מקבילים |
+| `/diff` | צפייה אינטראקטיבית בשינויים |
+| `/fork` | fork של שיחה |
+| `/desktop` | מעבר לאפליקציית Desktop |
+| `/rc` | שליטה מרחוק מהטלפון |
+| `/pr-comments` | שליפת תגובות מ-GitHub PR |
+| `/fast` | מצב מהיר (אותו מודל, פלט מהיר יותר) |
+| `/effort` | בקרת רמת מאמץ (low/medium/high/max) |
+| `/btw` | שאלת צד בלי להוסיף להיסטוריה |
+
+### פקודות ייחודיות ל-Gemini CLI
+
+| פקודה | תפקיד |
+|--------|--------|
+| `/compress` | דחיסה עם שם ייעודי (מקביל ל-`/compact`) |
+| `/restore` | שחזור קבצים למצב לפני הרצת כלי |
+| `/tools` | הצגת כל הכלים הזמינים |
+| `/docs` | פתיחת תיעוד בדפדפן |
+| `/auth` | החלפת שיטת אימות |
+| `/policies` | ניהול policies פעילות |
+| `/shells` | צפייה ב-background shells |
+| `/commands` | ניהול פקודות מותאמות אישית מקבצי TOML |
+| `/directory` | ניהול תיקיות עבודה מרובות |
+
+## השוואת מודלים
+
+| תפקיד | Claude Code | Gemini CLI |
+|--------|-------------|------------|
+| **מודל חכם** | Claude Opus | Gemini Pro |
+| **מודל מאוזן** | Claude Sonnet | Gemini Flash |
+| **מודל מהיר/זול** | Claude Haiku | Gemini Flash Lite |
+
+Flash Lite הוא המקבילה של Google ל-Haiku — מודל קטן, מהיר, וזול שמתאים למשימות פשוטות כמו autocomplete, סיכומים קצרים, ו-classification.
+
+## רשימת כל פקודות Claude Code
+
+לרשימה המלאה של כל הפקודות שדיברנו עליהן בקורס, ראו [Cheatsheet — טבלת פקודות](/prompting-cheatsheet#פקודות-claude-code).
+
+לתיעוד הרשמי המלא: [Built-in Commands — Claude Code Docs](https://code.claude.com/docs/en/commands)
+
+## מתי לבחור במה?
+
+| קריטריון | Claude Code | Gemini CLI |
+|----------|-------------|------------|
+| **חוזק בקוד** | מצטיין — Claude מוביל ב-coding benchmarks | טוב — Gemini משתפר במהירות |
+| **חינמי** | כלול במנוי Pro/Max (או API credits) | חינמי עם Gemini API key |
+| **Open Source** | לא | כן (Apache 2.0) |
+| **אקוסיסטם** | plugins, skills, Desktop app, GitHub Actions | extensions, Agent Skills |
+| **מולטימודלי** | תמונות, screenshots | תמונות, וידאו, אודיו |
+
+<Callout>
+הרעיון המרכזי של הקורס הזה — Agentic Loop, Context Window, CLAUDE.md — תקף לכל כלי AI בטרמינל. אם אתם עובדים עם Gemini CLI, אותם עקרונות חלים. רק שם הקובץ משתנה מ-`CLAUDE.md` ל-`GEMINI.md`.
+</Callout>
+
+<Callout emoji="📖">
+לתיעוד הרשמי של Gemini CLI: [Gemini CLI Commands Reference](https://geminicli.com/docs/reference/commands/)
+</Callout>

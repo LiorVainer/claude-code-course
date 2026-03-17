@@ -24,14 +24,24 @@ import LandingFeatures from '../app/_components/LandingFeatures'
 
 <div className="my-16 py-8 border-t border-border/40" dir="rtl">
   <div className="text-center max-w-2xl mx-auto">
-    <p className="text-sm text-muted-foreground leading-relaxed">
+    <p className="text-sm text-zinc-300 leading-relaxed">
       <strong className="text-foreground">הקורס הזה כולו נבנה עם Claude Code — בלי לכתוב שורת קוד אחת ידנית.</strong>
       <br />
       כל העמודים, הקומפוננטות, הדיאגרמות, הבחנים, המחקר, התוכן ואפילו הסרטונים — הכל נוצר דרך שיחה עם הכלי.
       זה אפילו לא פרויקט גדול — עם ניהול נכון, אפשר להגיע לתוצאה כזו תוך ימים ספורים.
-      <br />
-      אל תזלזלו בכוח של Claude Code. מה שתלמדו כאן ישנה את הדרך שאתם עובדים.
     </p>
+  </div>
+  <div className="mt-6 text-center max-w-2xl mx-auto">
+    <a
+      href="/gemini-cli"
+      className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-blue-400/40 bg-blue-500/10 hover:bg-blue-500/20 transition-colors text-sm"
+    >
+      <span className="text-blue-400 text-lg">🔷</span>
+      <span className="text-zinc-200">
+        העקרונות תקפים גם ל-<strong className="text-white">Gemini CLI</strong> של Google —{' '}
+        <span className="text-blue-400 underline underline-offset-2">ראו השוואת פקודות</span>
+      </span>
+    </a>
   </div>
 </div>
 
