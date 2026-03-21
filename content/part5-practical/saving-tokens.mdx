@@ -1,0 +1,105 @@
+import Terminal from '../../app/_components/Terminal'
+import { Callout, Tabs } from 'nextra/components'
+
+# חיסכון tokens
+
+כל token עולה כסף ותופס מקום ב-context window. ככל שחוסכים יותר, Claude יכול לעבוד על משימות ארוכות יותר בלי לאבד הקשר. הנה שני כלים משלימים שחוסכים 60-98% מה-tokens.
+
+## context-mode — חיסכון של עד 98% על נתונים גדולים
+
+### הבעיה
+
+כאשר Claude קורא קבצים גדולים (CSV, logs, JSON גדול), כל התוכן נטען לזיכרון. קובץ CSV של 10MB שוקל tokens רבים ומגביל מה Claude יכול לעשות.
+
+### הפתרון: context-mode plugin
+
+<Terminal title="context-mode — התקנה" lines={[
+  { prompt: '❯', command: '/plugin marketplace add mksglu/context-mode' },
+  { output: '✓ Installed mksglu/context-mode', color: '#28c840' },
+]} />
+
+context-mode מונע טעינת נתונים גולמיים לזיכרון. במקום זאת, הנתונים נשמרים ב-sandbox נפרד וClaude עובד עם תוצאות מחושבות בלבד.
+
+### החיסכון
+
+| ללא context-mode | עם context-mode |
+|-----------------|-----------------|
+| קובץ CSV של 100k שורות = ~500k tokens | אותו קובץ = ~10k tokens |
+| יחס: 4.6x יותר tokens | חיסכון: 78% reduction |
+
+<Callout emoji="💡">
+מפתחים שדיווחו על חיסכון של עד 98% ב-token usage אחרי הפעלת context-mode על פרויקטים עם הרבה קבצי נתונים.
+</Callout>
+
+### שילוב context-mode + Claude Code
+
+<Terminal title="context-mode — workflow" lines={[
+  { prompt: '❯', command: '/plugin marketplace add mksglu/context-mode' },
+  { output: '✓ Installed mksglu/context-mode', color: '#28c840' },
+  { output: '→ העבירו לClaude קובץ נתונים גדול' },
+  { output: '→ Claude עובד עם sandbox — לא נטען לזיכרון' },
+  { output: '✓ קבלו ניתוח מבלי לבזבז tokens', color: '#28c840' },
+]} />
+
+## RTK — חיסכון של 60-90% על פקודות CLI
+
+### הבעיה
+
+כל פעם ש-Claude מריץ פקודה (`git status`, `cat`, `npm test`), הפלט המלא נכנס ל-context. פקודה פשוטה כמו `git status` שוקלת ~2,000 tokens, ו-`npm test` יכול לעלות ~25,000 tokens — רוב הפלט הזה הוא רעש שClaude לא צריך.
+
+### הפתרון: RTK (Rust Token Killer)
+
+<Tabs items={['macOS', 'Linux', 'Windows']}>
+  <Tabs.Tab>
+    <Terminal title="rtk — macOS" lines={[
+      { prompt: '❯', command: 'brew install rtk' },
+      { output: '✓ rtk installed', color: '#28c840' },
+    ]} />
+  </Tabs.Tab>
+  <Tabs.Tab>
+    <Terminal title="rtk — Linux" lines={[
+      { prompt: '❯', command: 'curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh' },
+      { output: '✓ rtk installed to ~/.local/bin', color: '#28c840' },
+    ]} />
+  </Tabs.Tab>
+  <Tabs.Tab>
+    הורידו את ה-binary מ-[releases](https://github.com/rtk-ai/rtk/releases) (`rtk-x86_64-pc-windows-msvc.zip`) וחלצו ל-PATH.
+  </Tabs.Tab>
+</Tabs>
+
+לאחר ההתקנה, הפעילו את ה-hook:
+
+<Terminal title="rtk — הפעלת hook" lines={[
+  { prompt: '❯', command: 'rtk init --global' },
+  { output: '✓ Hook registered in ~/.claude/settings.json', color: '#28c840' },
+  { output: '→ Restart Claude Code to activate' },
+]} />
+
+RTK הוא CLI proxy שיושב בין Claude ל-shell ומסנן, דוחס ומקבץ את הפלט של כל פקודה. Hook ב-Claude Code משכתב פקודות אוטומטית (למשל `git status` → `rtk git status`) בלי שClaude יודע על זה.
+
+### החיסכון
+
+| פקודה | ללא RTK | עם RTK | חיסכון |
+|-------|---------|--------|--------|
+| `git status` | ~2,000 tokens | ~400 | -80% |
+| `cat` / `read` | ~40,000 | ~12,000 | -70% |
+| `npm test` | ~25,000 | ~2,500 | -90% |
+| `git add` / `commit` / `push` | ~1,600 | ~120 | -92% |
+| **סה״כ (30 דקות)** | **~118,000** | **~23,900** | **-80%** |
+
+<Callout emoji="💡">
+RTK עובד על **כל פקודת CLI** — git, docker, kubectl, test runners, linters, build tools, ועוד. התקינו פעם אחת ומקבלים חיסכון אוטומטי על כל session.
+</Callout>
+
+## context-mode מול RTK — מתי להשתמש בכל אחד?
+
+| | context-mode | RTK |
+|--|-------------|-----|
+| **מה חוסך** | נתונים גדולים (CSV, JSON, logs) | פלט פקודות CLI |
+| **איך עובד** | sandbox נפרד לנתונים | סינון ודחיסת פלט |
+| **התקנה** | plugin (`/plugin marketplace add`) | CLI + hook ([releases](https://github.com/rtk-ai/rtk/releases) / `brew install rtk`) |
+| **שילוב** | Plugin של Claude Code | Hook על Bash tool |
+
+<Callout type="info">
+שני הכלים משלימים — context-mode חוסך על נתונים גדולים שClaude קורא, ו-RTK חוסך על פלט פקודות שClaude מריץ. אפשר להשתמש בשניהם יחד.
+</Callout>

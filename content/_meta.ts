@@ -14,7 +14,7 @@ const meta: MetaRecord = {
   },
   intro: {
     title: 'מבוא 📖',
-    theme: { timestamp: false },
+    theme: { timestamp: false, breadcrumb: false },
   },
   'part1-foundations': {
     title: 'חלק א׳ — יסודות',
@@ -39,23 +39,23 @@ const meta: MetaRecord = {
   '--': { type: 'separator' },
   notebooklm: {
     title: 'NotebookLM 📓',
-    theme: { timestamp: false },
+    theme: { timestamp: false, breadcrumb: false },
   },
   podcast: {
     title: 'פודקאסט 🎧',
-    theme: { timestamp: false },
+    theme: { timestamp: false, breadcrumb: false },
   },
   resources: {
     title: 'מקורות וקישורים 📚',
-    theme: { timestamp: false },
+    theme: { timestamp: false, breadcrumb: false },
   },
   'prompting-cheatsheet': {
     title: 'Cheatsheet 💬',
-    theme: { timestamp: false },
+    theme: { timestamp: false, breadcrumb: false },
   },
   'gemini-cli': {
     title: 'Gemini CLI 🔷',
-    theme: { timestamp: false },
+    theme: { timestamp: false, breadcrumb: false },
   },
 }
 

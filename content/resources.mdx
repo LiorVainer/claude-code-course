@@ -1,6 +1,7 @@
-import { Cards, Callout } from 'nextra/components'
+import { Callout } from 'nextra/components'
+import ToolCard, { ToolCardGrid } from '../app/_components/ToolCard'
 
-# משאבים ולינקים
+# מקורות וקישורים
 
 ## תיעוד רשמי — Claude Code
 
@@ -57,50 +58,64 @@ import { Cards, Callout } from 'nextra/components'
 
 ## כלים
 
-<Cards>
-  <Cards.Card
+<ToolCardGrid>
+  <ToolCard
     title="OpenSpec"
     href="https://github.com/Fission-AI/OpenSpec"
-    arrow
-  >
-    Spec Driven Development — תכננו לפני שאתם כותבים קוד
-  </Cards.Card>
-  <Cards.Card
+    icon="FileCode2"
+    badge="SDD"
+    description="Spec Driven Development — תכננו לפני שאתם כותבים קוד"
+  />
+  <ToolCard
     title="context7"
     href="https://context7.com"
-    arrow
-  >
-    MCP server לדוקומנטציה מעודכנת של ספריות — פותר הלוצינציות
-  </Cards.Card>
-  <Cards.Card
+    icon="BookOpenText"
+    badge="MCP"
+    description="דוקומנטציה מעודכנת של ספריות — פותר הלוצינציות"
+  />
+  <ToolCard
+    title="OctoCode"
+    href="https://octocode.ai"
+    icon="Search"
+    badge="MCP"
+    description="חקירת קוד ב-GitHub/GitLab בשפה טבעית — ניווט סמנטי, call hierarchy, חיפוש חכם"
+  />
+  <ToolCard
     title="Figma MCP"
     href="https://github.com/GLips/Figma-Context-MCP"
-    arrow
-  >
-    חיבור Figma לClaude Code — design-to-code ישיר
-  </Cards.Card>
-  <Cards.Card
-    title="context-mode plugin"
+    icon="Palette"
+    badge="MCP"
+    description="חיבור Figma לClaude Code — design-to-code ישיר"
+  />
+  <ToolCard
+    title="context-mode"
     href="https://skills.sh/mksglu/context-mode"
-    arrow
-  >
-    חיסכון של עד 98% בtokens בעבודה עם נתונים גדולים
-  </Cards.Card>
-  <Cards.Card
+    icon="Coins"
+    badge="Plugin"
+    description="חיסכון של עד 98% בtokens בעבודה עם נתונים גדולים"
+  />
+  <ToolCard
+    title="RTK"
+    href="https://www.rtk-ai.app"
+    icon="Filter"
+    badge="CLI"
+    description="CLI proxy שדוחס פלט פקודות — חיסכון של 60-90% בtokens"
+  />
+  <ToolCard
     title="GitHub MCP"
     href="https://github.com/github/github-mcp-server"
-    arrow
-  >
-    גישה לissues, PRs וקוד ישירות מClaude Code
-  </Cards.Card>
-  <Cards.Card
+    icon="GitBranch"
+    badge="MCP"
+    description="גישה לissues, PRs וקוד ישירות מClaude Code"
+  />
+  <ToolCard
     title="skills.sh"
     href="https://skills.sh"
-    arrow
-  >
-    הקטלוג הקהילתי ל-Skills — גלו, הורידו, שתפו
-  </Cards.Card>
-</Cards>
+    icon="Sparkles"
+    badge="Marketplace"
+    description="הקטלוג הקהילתי ל-Skills — גלו, הורידו, שתפו"
+  />
+</ToolCardGrid>
 
 ## NotebookLM — חקירה עמוקה של החומר
 

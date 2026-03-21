@@ -27,6 +27,7 @@ MCP הוא ה-API של עולם ה-AI לכלים חיצוניים — פרוטו
 | שרת | שימוש |
 |-----|--------|
 | [context7](https://context7.com) | דוקומנטציה מעודכנת של ספריות |
+| [OctoCode](https://octocode.ai) | חקירת קוד ב-GitHub/GitLab בשפה טבעית |
 | [GitHub MCP](https://github.com/github/github-mcp-server) | קריאת issues, PRs, קוד |
 | [Figma MCP](https://github.com/GLips/Figma-Context-MCP) | עיצובים ישירות לקוד |
 | [Chrome DevTools MCP](https://github.com/nicobailon/chrome-devtools-mcp) | בדיקות, screenshots, אוטומציית דפדפן |
@@ -123,12 +124,67 @@ MCP הוא ה-API של עולם ה-AI לכלים חיצוניים — פרוטו
   />
 </div>
 
-## יתרונות MCP
+## OctoCode MCP — חקירת קוד בשפה טבעית
 
-- **סטנדרטיזציה** — אותו פרוטוקול לכל הכלים
-- **אבטחה** — כל שרת מנהל הרשאות בנפרד
-- **הרחבה** — קל להוסיף כלים חדשים
-- **קהילה** — אלפי שרתים זמינים
+<Callout emoji="💡">
+OctoCode מאפשר ל-Claude לחקור repos ב-GitHub ו-GitLab בשפה טבעית — מציאת הגדרות, מעקב אחרי call chains, הבנת ארכיטקטורה, ו-code review. במקום לקרוא קבצים שלמים ולבזבז tokens, Claude מקבל תשובות ממוקדות.
+</Callout>
+
+### מה OctoCode נותן?
+
+| יכולת | דוגמה |
+|-------|--------|
+| **ניווט סמנטי** | "איפה מוגדר הפונקציה `handleAuth`?" — קפיצה ישירה להגדרה |
+| **מעקב קריאות** | "מי קורא ל-`validateToken`?" — call hierarchy מלא |
+| **חיפוש חכם** | "מצא את כל ה-API endpoints" — חיפוש לפי תבנית |
+| **חקירת repos חיצוניים** | "תסביר איך `react-query` מנהל cache" — מחקר על ספריות |
+
+### התקנה
+
+הדרך הקלה ביותר — wizard אינטראקטיבי שמגדיר authentication ומתקין את ה-MCP server:
+
+<Terminal title="mcp — התקנת OctoCode (wizard)" lines={[
+  { prompt: '❯', command: 'npx octocode-cli' },
+  { output: '→ GitHub OAuth setup...', color: '#cc785c' },
+  { output: '→ MCP server installation...' },
+  { output: '✓ OctoCode MCP installed for Claude Code', color: '#28c840' },
+]} />
+
+לחלופין, הוסיפו ידנית ל-MCP config:
+
+<Terminal title="mcp — התקנה ידנית" lines={[
+  { prompt: '❯', command: 'claude mcp add --transport stdio octocode npx octocode-mcp@latest' },
+  { output: '✓ octocode added as local MCP server', color: '#28c840' },
+]} />
+
+### דוגמת שימוש
+
+<Terminal title="octocode — חקירת repo חיצוני" lines={[
+  { prompt: '❯', command: 'תחקור את הrepo rtk-ai/rtk — איך הם מסננים פלט של git commands?' },
+  { output: '  🔍 Searching rtk-ai/rtk for git filter logic...', color: '#cc785c' },
+  { output: '  Found: src/filters/git.rs — GitStatusFilter' },
+  { output: '  → Parses porcelain output, groups by directory' },
+  { output: '  → Strips unchanged files, keeps only modified/new' },
+  { output: '  ✓ Result: ~80% token reduction on git status', color: '#28c840' },
+]} />
+
+### למה זה חוסך tokens?
+
+בלי OctoCode, כדי להבין repo חיצוני Claude צריך לקרוא קבצים שלמים — עשרות אלפי tokens על כל קובץ. עם OctoCode, Claude מקבל תשובות ממוקדות: רק ההגדרה, רק הקריאות, רק השורות הרלוונטיות. זה כמו ההבדל בין לקרוא ספר שלם לבין לחפש באינדקס.
+
+## סיכום — למה MCP משנה את המשחק
+
+MCP הופך כל כלי חיצוני לחלק טבעי מעבודת ה-AI. במקום לעבור בין חלונות, להעתיק פלט, ולהדביק — Claude מתקשר ישירות עם הכלים שאתם כבר משתמשים בהם.
+
+| מה | איך MCP עוזר |
+|-----|-------------|
+| **דוקומנטציה** | context7 מביא docs מעודכנים — בלי הלוצינציות |
+| **חקירת קוד** | OctoCode חוקר repos בשפה טבעית — בלי לקרוא קבצים שלמים |
+| **עיצוב** | Figma MCP מתרגם designs לקוד — בלי screenshots |
+| **בדיקות** | Playwright/Chrome DevTools מריצים E2E — בלי לצאת מה-terminal |
+| **ניהול תוכן** | Notion, Elasticsearch — שליפת מידע ישירות |
+
+**העיקרון**: כל כלי שיש לו MCP server הופך לכלי ש-Claude יודע להשתמש בו — באותו פרוטוקול סטנדרטי, בלי integration מיוחד לכל אחד.
 
 <Callout emoji="📖">
   לתיעוד הרשמי המלא: [MCP — Claude Code Docs](https://code.claude.com/docs/en/mcp)

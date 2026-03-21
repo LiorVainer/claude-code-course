@@ -3,9 +3,9 @@ import QuizScore from '../../app/_components/QuizScore'
 
 # בדקו את עצמכם — חלק ה׳
 
-חמש שאלות על שליטה מעשית: simplify/, usage/, context-mode, remote control, ואבטחה.
+שאלות על שליטה מעשית: simplify/, usage/, context-mode, RTK, remote control, ואבטחה.
 
-<QuizScore total={6}>
+<QuizScore total={7}>
 
 <QuizQuestion
   number={1}
@@ -48,13 +48,29 @@ import QuizScore from '../../app/_components/QuizScore'
   ]}
   correctIndex={1}
   explanation="context-mode מונע טעינת נתונים גולמיים (CSV, JSON גדול, logs) לזיכרון. הנתונים נשמרים ב-sandbox ו-Claude עובד עם תוצאות מחושבות, עם חיסכון של 4.6x (78%) ועד 98% בcases מסוימים."
-  contentLink="/part5-practical/tips"
-  contentLabel="טיפים"
+  contentLink="/part5-practical/saving-tokens"
+  contentLabel="חיסכון tokens"
 />
 
 <QuizQuestion
   number={4}
+  question="מה RTK עושה ואיך הוא חוסך tokens?"
+  options={[
+    'מקצר את הפרומפטים שנשלחים ל-Claude',
+    'מסנן ודוחס פלט פקודות CLI לפני שהן נכנסות ל-context — חיסכון של 60-90%',
+    'מחליף את Claude במודל קטן יותר לפקודות פשוטות',
+    'משנה את הגדרות ה-context window של Claude',
+  ]}
+  correctIndex={1}
+  explanation="RTK הוא CLI proxy שיושב בין Claude ל-shell. הוא מסנן, דוחס ומקבץ את הפלט של כל פקודה (git, npm test, docker וכו׳) — חיסכון ממוצע של 80% על session של 30 דקות."
+  contentLink="/part5-practical/saving-tokens"
+  contentLabel="חיסכון tokens"
+/>
+
+<QuizQuestion
+  number={5}
   question="כיצד Remote Control עובד — איפה הקוד נשמר?"
+
   options={[
     'הקוד מועלה לענן של Anthropic לצורך העיבוד',
     'הקוד נשמר תמיד על המחשב שלכם — הטלפון רק שולח פקודות',
@@ -68,7 +84,7 @@ import QuizScore from '../../app/_components/QuizScore'
 />
 
 <QuizQuestion
-  number={5}
+  number={6}
   question="מה הגישה המומלצת לאבטחת קבצי .env עם Claude Code?"
   options={[
     'לכתוב ב-CLAUDE.md "אל תיגע ב-.env"',
@@ -83,7 +99,7 @@ import QuizScore from '../../app/_components/QuizScore'
 />
 
 <QuizQuestion
-  number={6}
+  number={7}
   question="מה הטכניקה 'תנו ל-Claude לראיין אתכם'?"
   options={[
     'Claude שואל שאלות הבהרה לפני שמתחיל לעבוד',
