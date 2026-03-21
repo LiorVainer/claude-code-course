@@ -159,13 +159,16 @@ OctoCode מאפשר ל-Claude לחקור repos ב-GitHub ו-GitLab בשפה טב
 
 ### דוגמת שימוש
 
-<Terminal title="octocode — חקירת repo חיצוני" lines={[
-  { prompt: '❯', command: 'תחקור את הrepo rtk-ai/rtk — איך הם מסננים פלט של git commands?' },
-  { output: '  🔍 Searching rtk-ai/rtk for git filter logic...', color: '#cc785c' },
-  { output: '  Found: src/filters/git.rs — GitStatusFilter' },
-  { output: '  → Parses porcelain output, groups by directory' },
-  { output: '  → Strips unchanged files, keeps only modified/new' },
-  { output: '  ✓ Result: ~80% token reduction on git status', color: '#28c840' },
+<Terminal title="octocode — חקירת react-query" lines={[
+  { prompt: '❯', command: 'תסביר איך react-query מנהל cache invalidation — תראה את הקוד' },
+  { output: '  🔍 Searching TanStack/query for cache invalidation...', color: '#cc785c' },
+  { output: '  Found: packages/query-core/src/queryClient.ts' },
+  { output: '  → invalidateQueries() filters by queryKey prefix matching' },
+  { output: '  → Calls query.invalidate() → sets stale → triggers refetch' },
+  { output: '  Found: packages/query-core/src/query.ts:321' },
+  { output: '  → Query#invalidate() sets this.state.isInvalidated = true' },
+  { output: '  → Observers notified via this.#observers.forEach(o => o.onQueryUpdate())' },
+  { output: '  ✓ 3 files analyzed, 0 full files loaded', color: '#28c840' },
 ]} />
 
 ### למה זה חוסך tokens?
